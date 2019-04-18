@@ -1,0 +1,19 @@
+<app-panel *ngIf="panel" [shortcut]="shortcut"></app-panel> 
+<div class="task-bar" >
+  <div class="task">
+    <div class="shortcuts">
+    <i class="fab fa-ioxhost" (click)="showPanel()"></i>
+    </div>
+    <div class="box">
+        <app-task *ngFor='let task of tasks' [task]="task" [direction]="'row'" [top]="'0'" (click)="task.colappase(task)"></app-task>
+    </div>
+  </div>
+  <div class="system-states">
+      <i  *ngIf='!audio.muted' class="fas fa-volume-up" (click)="audio.muted=true"></i>
+      <i  *ngIf='audio.muted' class="fas fa-volume-mute" (click)="audio.muted=false"></i>
+    <p>ENG</p>
+    <div class="date">
+      <p id='time'>{{justtime}}</p>
+    </div>
+  </div>
+</div>

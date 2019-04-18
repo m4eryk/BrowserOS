@@ -1,0 +1,56 @@
+<div class="wrapper">
+    <video *ngIf="source.video" controls>
+        <source *ngFor="let item of source.source" src="{{item.src}}" type="{{item.type}}">
+        I'm sorry; your browser doesn't support HTML5 video.
+    </video>
+    <div class="wrappar-music"  *ngIf="!source.video">
+        <div class="player">
+            <div class="banner">
+            <img src="{{img}}" alt="baner">
+            <div class="time">
+                <span class="start">{{start}}</span>
+                <span class="end">{{end}}</span>
+            </div>
+            <progress value="{{progressElmValue}}" max="{{progressElmMax}}" id='progress' ></progress>
+            </div>
+            <div class="box">
+                <p id="Artist">{{artist}}</p>
+                <p id="Song">{{title}}</p>
+                <div class="controll">
+                    
+                    <div class="btn">
+                        <button (mouseenter)="viewFalse()" (click)="previous()">
+                            <i class="fas fa-backward fa-2x"></i>
+                        </button>
+                        <button (mouseenter)="viewFalse()" *ngIf='source.audio.paused' (click)="play()">
+                            <i class="fas fa-play fa-2x"></i>
+                        </button>
+                        <button (mouseenter)="viewFalse()" *ngIf='!source.audio.paused' (click)="pause()">
+                            <i class="fas fa-pause fa-2x"></i>
+                        </button>
+                        <button (mouseenter)="viewFalse()" (click)="next()">
+                            <i class="fas fa-forward fa-2x"></i>
+                        </button>
+                        <div class="volume">
+                            <input *ngIf="view" type="range" min="0" max="10" value="5" class="slider" #myRange orient="vertical"  (input)="change(myRange.value)" >
+                            <button (click)="source.audio.muted=!source.audio.muted" (mouseenter)="viewTrue()">
+                                <i *ngIf="!source.audio.muted" class="fas fa-volume-up fa-2x"></i>
+                                <i *ngIf="source.audio.muted" class="fas fa-volume-mute fa-2x"></i>
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="playlist">
+            <div class="item" *ngFor="let item of music" (click)="selectSong(item)">
+                <img src="{{item.img}}" alt="song">
+                <div class="text">
+                    <span>{{item.artist}}</span>
+                    <span id="Song">{{item.title}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="wrapper" cdkDragBoundary=".desktop" cdkDrag  [ngStyle]="getPostion()">
+  <h3>{{quest}}</h3>
+  <div class="btn">
+    <div *ngIf="tas.click" class="btn">
+      <button (click)="ok(obj)">Yes</button><button  (click)="dst()">No</button>
+    </div>
+    <button *ngIf="!tas.click" (click)="dst()">Ok</button>
+  </div>
+</div>

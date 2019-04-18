@@ -1,0 +1,51 @@
+.contextmenu{
+    position: fixed;
+    height: 110px;
+    display: flex;
+    flex-direction: row;
+}
+.left-side{
+    background-color: black;
+    width: 160px;
+    padding-left:10px;
+    padding: 10px;
+    border: 1px double gainsboro;
+}
+.right-side{
+    margin-top: 25px;
+    background-color: rgb(59, 58, 58);
+    border-top: 1px double gainsboro;
+    border-right: 1px double gainsboro;
+    border-bottom: 1px double gainsboro;
+    height: 45px;
+    width: 70px;
+    padding-left:10px;
+    padding: 5px;
+    margin-right: 40px;
+}
+.item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.right-side .item:hover{
+    background-color:black;
+    cursor: pointer;
+}
+.left-side .item:hover{
+    background-color: rgb(59, 58, 58);
+    cursor: pointer;
+}
+
+.child{
+    background-color: black;
+}
+
+.pnt{
+    display: flex;
+    flex-direction: row;
+
+}
+.punct{
+    display: column;
+}
