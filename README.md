@@ -6,7 +6,6 @@ MyOS is the development of an operating system emulator using HTML, CSS, TypeScr
 At the moment, the project is at the initial stage of development and implements such functions as opening folders and partially adjusting the appearance.
 
 
-
 	
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
 
