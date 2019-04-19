@@ -1,0 +1,43 @@
+<div class="wrapper">
+
+    <div class="left-bar">
+      <div class="wrapper-i">
+        <i class="fas fa-user-astronaut"></i>
+      </div>
+      <div class="wrapper-i">
+        <i class="fas fa-cogs" (click)="setting.click(setting)"></i>
+      </div>
+      <div class="wrapper-i">
+        <i class="fas fa-archive"></i>
+      </div>
+      <div class="wrapper-i">
+        <i class="fas fa-power-off" (click)='exit()'></i>
+      </div>
+    </div>
+    <div class="right-bar">
+        <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
+            <div *cdkVirtualFor="let item of shortcut" class="example-item">
+              <div *ngIf="item.name" class="item">
+                <app-task  [task]="item" [top]="'20px'" [direction]="'column'" (dblclick)="item.dblclick(item)"></app-task>
+              </div>
+            </div>
+          </cdk-virtual-scroll-viewport>
+    
+        <div class="prof">
+          <p class="name">Alexandr Mayorov<p>
+            <div class="today">
+                <div class="day">
+                    <p class="dayD">{{day}}</p>
+                    <p class='dayI'>{{dayI}}</p>
+                </div>
+                <p class="time">{{time}}</p>
+            </div>
+          <div class="programms">
+              <i class="fab fa-gripfire fa-3x"><span>Internet</span></i>
+              <i class="fas fa-file-image fa-3x"><span>Picture</span></i>
+              <i class="fas fa-file-archive fa-3x"><span>My computer</span></i>
+          </div>
+        </div>
+    </div>
+</div>
+

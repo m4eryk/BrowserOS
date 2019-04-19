@@ -2,19 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DesktopPageComponent } from './desktop-page/desktop-page.component';
-import { WindowComponent } from './window/window.component';
+import { DesktopPageComponent } from './desktop/desktop-page/desktop-page.component';
+import { WindowComponent } from './desktop/window/window.component';
 import { DragDropModule} from '@angular/cdk/drag-drop';
-import { TaskComponent } from './task/task.component';
+import { TaskComponent } from './desktop/task/task.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { PanelComponent } from './panel/panel.component';
-import { ShortcutComponent } from './shortcut/shortcut.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { ContextmenuComponent } from './contextmenu/contextmenu.component';
-import { SettingComponent } from './setting/setting.component';
-import { TextreaderComponent } from './textreader/textreader.component';
-import { PlayerComponent } from './player/player.component';
-import { MessageboxComponent } from './messagebox/messagebox.component';
+import { PanelComponent } from './desktop/panel/panel.component';
+import { ShortcutComponent } from './desktop/shortcut/shortcut.component';
+import { NavBarComponent } from './desktop/nav-bar/nav-bar.component';
+import { ContextmenuComponent } from './desktop/contextmenu/contextmenu.component';
+import { SettingComponent } from './desktop/setting/setting.component';
+import { TextreaderComponent } from './desktop/textreader/textreader.component';
+import { PlayerComponent } from './desktop/player/player.component';
+import { MessageboxComponent } from './desktop/messagebox/messagebox.component';
 
 @NgModule({
   declarations: [
