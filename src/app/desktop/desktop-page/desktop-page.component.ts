@@ -201,6 +201,7 @@ constructor(){
 
 ngOnInit() {
   this.shortcut= this.map.get('Desktop');
+  this.shortcut.push(this.map.get('PC'));
   console.log(this.shortcut);
   
   var widht = Math.round(window.outerWidth/100), height = Math.round(window.outerHeight/113);

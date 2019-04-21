@@ -45,14 +45,17 @@ hr{
     margin-top: 15px;
     text-align: left;
     cursor: pointer;
-    width: 100%;
     justify-content: space-around;
 }
 
 .lable{
+    width: 10%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+}
+.item{
+    width: 98%;
 }
 .item:hover{
     box-sizing: border-box;
