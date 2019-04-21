@@ -41,15 +41,33 @@ hr{
 .file{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start;
+    margin-top: 15px;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+    justify-content: space-around;
+}
 
-    margin-top: 5px;
-    margin-left: 15px;
-    margin-right: 5px;
+.lable{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.item:hover{
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 .head p{
     font-weight: bold;
+}
+.file img{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }
 
 .cdk-drag-preview {

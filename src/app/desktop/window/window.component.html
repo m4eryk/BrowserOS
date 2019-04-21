@@ -18,11 +18,16 @@
       <p> DATE OF CHANGE</p>
     </div>
     <div class="content" cdkDropList (cdkDropListDropped)="drop($event)">
-      <div class="file" cdkDrag *ngFor='let siz of size'>
-        <p>file</p>
-        <p>{{siz}} mb</p>
-        <p>09.04.2019</p>
-      </div>
+      <ng-container *ngIf='tas.dir'>
+          <div  class="file item" cdkDrag *ngFor='let item of tas.dir'(dblclick)="item.dblclick(item)" >
+            <div class="lable">
+                <img src="{{item.image}}" alt="label">
+                <p>{{item.name}}</p>
+            </div>
+              <p>{{item.size}} mb</p>
+              <p>{{item.date}}</p>
+            </div>
+      </ng-container>
     </div>
   </div>
   
