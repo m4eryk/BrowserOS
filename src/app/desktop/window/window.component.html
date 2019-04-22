@@ -11,24 +11,5 @@
   <app-setting *ngIf='tas.setting' [desktopObj]='tas.desktopObj'></app-setting>
   <app-textreader *ngIf='tas.text' [value]='tas.value' [tas]='tas'></app-textreader>
   <app-player *ngIf="tas.player" [source]="tas" ></app-player>
-  <div class="explorer" *ngIf='tas.explorer'>
-    <div class="file head">
-      <p>NAME FILE</p>
-      <p>SIZE</p>
-      <p> DATE OF CHANGE</p>
-    </div>
-    <div class="content" cdkDropList (cdkDropListDropped)="drop($event)">
-      <ng-container *ngIf='tas.dir'>
-          <div  class="file item" cdkDrag *ngFor='let item of tas.dir'(dblclick)="item.dblclick(item)" >
-            <div class="lable">
-                <img src="{{item.image}}" alt="label">
-                <p>{{item.name}}</p>
-            </div>
-              <p>{{item.size}} mb</p>
-              <p>{{item.date}}</p>
-            </div>
-      </ng-container>
-    </div>
-  </div>
-  
+  <app-explorer *ngIf="tas.explorer" [tas]='tas'></app-explorer>
 </div>

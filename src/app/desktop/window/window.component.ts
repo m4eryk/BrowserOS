@@ -9,10 +9,11 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 export class WindowComponent implements OnInit, OnDestroy {
 
 
-  @Input() tas:object;
+  @Input() tas;
   @Input() roll : boolean;
   @Input() destroy;
   @Input() desktopSetting;
+  path:string;
   x:string;
   y:string;
   height:string='0';
@@ -69,6 +70,7 @@ export class WindowComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
+   
   }
 }
 

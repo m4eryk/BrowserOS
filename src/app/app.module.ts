@@ -15,6 +15,7 @@ import { SettingComponent } from './desktop/setting/setting.component';
 import { TextreaderComponent } from './desktop/textreader/textreader.component';
 import { PlayerComponent } from './desktop/player/player.component';
 import { MessageboxComponent } from './desktop/messagebox/messagebox.component';
+import { ExplorerComponent } from './desktop/explorer/explorer.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MessageboxComponent } from './desktop/messagebox/messagebox.component';
     SettingComponent,
     TextreaderComponent,
     PlayerComponent,
-    MessageboxComponent
+    MessageboxComponent,
+    ExplorerComponent
   ],
   imports: [
     BrowserModule,

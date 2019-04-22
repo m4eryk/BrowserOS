@@ -1,0 +1,65 @@
+.file{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 15px;
+    text-align: left;
+    cursor: pointer;
+}
+.head p{
+    font-weight: bold;
+    margin-right:15px;
+    margin-left:20px;
+}
+.item p{
+    margin-right:50px;
+}
+.lable{
+    margin-right:80px;
+    margin-left:40px;
+}
+
+.item{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 15px;
+    text-align: left;
+    cursor: pointer;
+    width: 95%;
+    margin-left:20px;
+}
+.item img{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+.item:hover{
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+.lable{
+    width: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+  
+.cdk-drag-placeholder {
+opacity: 0;
+}
+
+.cdk-drag-animating {
+transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.file:last-child {
+border: none;
+}
+
+.content.cdk-drop-list-dragging .file:not(.cdk-drag-placeholder) {
+transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
