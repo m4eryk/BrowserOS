@@ -20,6 +20,7 @@
 }
 
 .item{
+    height: 25px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

@@ -22,604 +22,202 @@ desktopIsActivete:boolean;
 fs:object = {
   'Desktop': [
             {
-              'image' : '../../assets/img/folder.png',
               'name' : 'MyFolder',
-              'id' : 0,
-              'size' : '124',
-              'date' : '09.02.2019',
-              'explorer' : true,
-              'type' : 'Folder',
+              'type' : 'folder',
               'dir':[
                       {
-                        'image' : '../../assets/img/folder.png',
                         'name' : 'folder1',
-                        'size' : '124',
-                        'date' : '09.02.2019',
-                        'explorer' : true,
-                        'id' : 0,
+                        'type' : 'folder',
                         'dir' : [
                           {
                             'name' : 'Textfile',
-                            'size' : '124',
-                            'date' : '19.04.2019',
-                            'image' : '../../assets/img/text.png',
-                            'id' : 2,
-                            'text' : true,
+                            'type' : 'txt',
                             'change' : false,
-                            'value': '',
-                            'dblclick':(obj) => {
-                              this.app.textreader.bild(obj);
-                            },
-                            'destroy' : (obj) =>{
-                              this.app.textreader.destroy(obj)
-                            },
-                            'colappase' : (param) =>{
-                              this.app.textreader.colappase(param)
-                            }
+                            'value': ''
                           },
                           {
                             'name' : 'Textfile',
-                            'size' : '124',
-                            'date' : '19.04.2019',
-                            'image' : '../../assets/img/text.png',
-                            'id' : 2,
-                            'text' : true,
+                            'type' : 'txt',
                             'change' : false,
-                            'value': '',
-                            'dblclick':(obj) => {
-                              this.app.textreader.bild(obj);
-                            },
-                            'destroy' : (obj) =>{
-                              this.app.textreader.destroy(obj)
-                            },
-                            'colappase' : (param) =>{
-                              this.app.textreader.colappase(param)
-                            }
+                            'value': ''
                           }
-                        ],
-                        'dblclick' : (obj) => {
-                          this.app.explorer.bild(obj)
-                        },
-                        'destroy' : (obj) =>{
-                          this.app.explorer.destroy(obj)
-                        },
-                        'colappase' : (param) =>{
-                          this.app.explorer.colappase(param)
-                        }
+                        ]
                       },
                       {
-                        'image' : '../../assets/img/folder.png',
                         'name' : 'folder2',
-                        'size' : '124',
-                        'date' : '09.02.2019',
-                        'explorer' : true,
-                        'id' : 1,
+                        'type' : 'folder',
                         'dir' : [
                           {
                             'name' : 'Textfile',
-                            'size' : '124',
-                            'date' : '19.04.2019',
-                            'image' : '../../assets/img/text.png',
-                            'id' : 2,
-                            'text' : true,
+                            'type' : 'txt',
                             'change' : false,
-                            'value': '',
-                            'dblclick':(obj) => {
-                              this.app.textreader.bild(obj);
-                            },
-                            'destroy' : (obj) =>{
-                              this.app.textreader.destroy(obj)
-                            },
-                            'colappase' : (param) =>{
-                              this.app.textreader.colappase(param)
-                            }
+                            'value': ''
                           }
-                        ],
-                        'dblclick' : (obj) => {
-                          this.app.explorer.bild(obj)
-                        },
-                        'destroy' : (obj) =>{
-                          this.app.explorer.destroy(obj)
-                        },
-                        'colappase' : (param) =>{
-                          this.app.explorer.colappase(param)
-                        }
+                        ]
                       },
                       {
-                        'image' : '../../assets/img/folder.png',
                         'name' : 'folder2',
-                        'size' : '124',
-                        'date' : '09.02.2019',
-                        'explorer' : true,
-                        'id' : 1,
+                        'type' : 'folder',
                         'dir' : [
                           {
                             'name' : 'Textfile',
-                            'size' : '124',
-                            'date' : '19.04.2019',
-                            'image' : '../../assets/img/text.png',
-                            'id' : 2,
-                            'text' : true,
+                            'type' : 'txt',
                             'change' : false,
-                            'value': '',
-                            'dblclick':(obj) => {
-                              this.app.textreader.bild(obj);
-                            },
-                            'destroy' : (obj) =>{
-                              this.app.textreader.destroy(obj)
-                            },
-                            'colappase' : (param) =>{
-                              this.app.textreader.colappase(param)
-                            }
+                            'value': ''
                           }
-                        ],
-                        'dblclick' : (obj) => {
-                          this.app.explorer.bild(obj)
-                        },
-                        'destroy' : (obj) =>{
-                          this.app.explorer.destroy(obj)
-                        },
-                        'colappase' : (param) =>{
-                          this.app.explorer.colappase(param)
-                        }
+                        ]
                       }
                     ],
-                    'dblclick':(obj) => {
-                      this.app.explorer.bild(obj)
-                    },
-                    'destroy' : (obj) =>{
-                      this.app.explorer.destroy(obj)
-                    },
-                    'colappase' : (param) =>{
-                      this.app.explorer.colappase(param)
-                    }
             },
             {
-              'image' : '../../assets/img/folder.png',
               'name' : 'YourFolder',
-              'id' : 1,
-              'explorer' : true,
-              'type' : 'Folder',
-              'size' : '124',
-              'date' : '09.02.2019',
+              'type' : 'folder',
               'dir' : [
                 {
-                  'image' : '../../assets/img/text.png',
                   'name' : 'Textfile',
-                  'size' : '124',
-                  'date' : '19.04.2019',
-                  'text' : true,
+                  'type' : 'txt',
                   'change' : false,
-                  'value': '',
-                  'dblclick':(obj) => {
-                    this.app.textreader.bild(obj);
-                  },
-                  'destroy' : (obj) =>{
-                    this.app.textreader.destroy(obj)
-                  },
-                  'colappase' : (param) =>{
-                    this.app.textreader.colappase(param)
-                  }
+                  'value': ''
                 },
                 {
-                  'image' : '../../assets/img/player.png',
-                  'name' : 'Video',
-                  'size' : '124',
-                  'date' : '19.04.2019',
-                  'id' : 0,
-                  'player' : true,
-                  'video' : true,
+                  'name' : 'BlackHole',
+                  'type' : 'mp4',
                   'source' : [
                               {
                                 'src' : '../../assets/video/videoplayback.mp4',
                                 'type' : 'video/mp4'
                               }
-                  ],
-                  'dblclick' :(obj) => {
-                    this.app.player.bild(obj);
-                  },
-                  'destroy' : (obj) =>{
-                    this.app.player.destroy(obj)
-                  },
-                  'colappase' : (param) =>{
-                    this.app.player.colappase(param)
-                  }
+                  ]
                 }
               ],
-              'dblclick':(obj) => {
-                this.app.explorer.bild(obj)
-              },
-              'destroy': (obj) =>{
-                this.app.explorer.destroy(obj)
-              },
-              'colappase' : (param) =>{
-                this.app.explorer.colappase(param)
-              }
             },
             {
-              'image' : '../../assets/img/text.png',
               'name' : 'MyText',
-              'id' : 2,
-              'text' : true,
-              'size' : '124',
-              'date' : '09.02.2019',
+              'type' : 'txt',
               'change' : false,
-              'value': '',
-              'dblclick':(obj) => {
-                this.app.textreader.bild(obj);
-              },
-              'destroy' : (obj) =>{
-                this.app.textreader.destroy(obj)
-              },
-              'colappase' : (param) =>{
-                this.app.textreader.colappase(param)
-              }
+              'value': ''
             },
             {
-              'image' : '../../assets/img/player.png',
-              'name' : 'Video',
-              'id' : 0,
-              'size' : '124',
-              'date' : '09.02.2019',
-              'player' : true,
-              'video' : true,
+              'name' : 'BlackHole',
+              'type' : 'mp4',
               'source' : [
                           {
                             'src' : '../../assets/video/videoplayback.mp4',
                             'type' : 'video/mp4'
                           }
-              ],
-              'dblclick' :(obj) => {
-                this.app.player.bild(obj);
-              },
-              'destroy' : (obj) =>{
-                this.app.player.destroy(obj)
-              },
-              'colappase' : (param) =>{
-                this.app.player.colappase(param)
-              }
+              ]
             },
             {
-              'image': '../../assets/img/player.png',
-              'name': 'Music',
-              'id' : 2,
-              'size' : '124',
-              'date' : '09.02.2019',
-              'player': true,
-              'music': true,
-              'dblclick':(obj) => {
-                if(!this.playerActiv){
-                  this.app.player.bild(obj);
-                  this.playerActiv=true;
-                }
-                else{
-                  this.app.message.bild(this.message[1], obj);
-                }
-              },
-              'destroy' : (obj) =>{
-                this.app.player.destroy(obj);
-                this.playerActiv=false;
-              },
-              'colappase' : (param) =>{
-                this.app.player.colappase(param)
-              }
+              'name' : 'Music',
+              'type' : 'mp3'
             }
         ],
     'PC':{ 
           'image' : '../../assets/img/PC.png',
           'name' : 'PC',
-          'id' : 0,
-          'size' : '124',
-          'date' : '09.02.2019',
-          'explorer' : true,
-          'type' : 'Folder',
+          'type' : 'folder',
           'dir':[
             {
-              'image' : '../../assets/img/folder.png',
               'name' : 'DiskC',
-              'id' : 0,
-              'size' : '124',
-              'date' : '09.02.2019',
-              'explorer' : true,
-              'type' : 'Folder',
+              'type' : 'folder',
               'dir':[
                       {
-                        'image' : '../../assets/img/folder.png',
                         'name' : 'MyFolder',
-                        'id' : 0,
-                        'size' : '124',
-                        'date' : '09.02.2019',
-                        'explorer' : true,
-                        'type' : 'Folder',
+                        'type' : 'folder',
                         'dir':[
                                 {
-                                  'image' : '../../assets/img/folder.png',
+                          
                                   'name' : 'folder1',
-                                  'size' : '124',
-                                  'date' : '09.02.2019',
-                                  'explorer' : true,
-                                  'id' : 0,
+                                  'type' : 'folder',
                                   'dir' : [
                                     {
                                       'name' : 'Textfile',
-                                      'size' : '124',
-                                      'date' : '19.04.2019',
-                                      'image' : '../../assets/img/text.png',
-                                      'id' : 2,
-                                      'text' : true,
+                                      'type' : 'txt',
                                       'change' : false,
-                                      'value': '',
-                                      'dblclick':(obj) => {
-                                        this.app.textreader.bild(obj);
-                                      },
-                                      'destroy' : (obj) =>{
-                                        this.app.textreader.destroy(obj)
-                                      },
-                                      'colappase' : (param) =>{
-                                        this.app.textreader.colappase(param)
-                                      }
+                                      'value': ''
                                     },
                                     {
                                       'name' : 'Textfile',
-                                      'size' : '124',
-                                      'date' : '19.04.2019',
-                                      'image' : '../../assets/img/text.png',
-                                      'id' : 2,
-                                      'text' : true,
+                                      'type' : 'txt',
                                       'change' : false,
-                                      'value': '',
-                                      'dblclick':(obj) => {
-                                        this.app.textreader.bild(obj);
-                                      },
-                                      'destroy' : (obj) =>{
-                                        this.app.textreader.destroy(obj)
-                                      },
-                                      'colappase' : (param) =>{
-                                        this.app.textreader.colappase(param)
-                                      }
+                                      'value': ''
                                     }
-                                  ],
-                                  'dblclick' : (obj) => {
-                                    this.app.explorer.bild(obj)
-                                  },
-                                  'destroy' : (obj) =>{
-                                    this.app.explorer.destroy(obj)
-                                  },
-                                  'colappase' : (param) =>{
-                                    this.app.explorer.colappase(param)
-                                  }
+                                  ]
                                 },
                                 {
-                                  'image' : '../../assets/img/folder.png',
                                   'name' : 'folder2',
-                                  'size' : '124',
-                                  'date' : '09.02.2019',
-                                  'explorer' : true,
-                                  'id' : 1,
+                                  'type' : 'folder',
                                   'dir' : [
                                     {
                                       'name' : 'Textfile',
-                                      'size' : '124',
-                                      'date' : '19.04.2019',
-                                      'image' : '../../assets/img/text.png',
-                                      'id' : 2,
-                                      'text' : true,
+                                      'type' : 'txt',
                                       'change' : false,
-                                      'value': '',
-                                      'dblclick':(obj) => {
-                                        this.app.textreader.bild(obj);
-                                      },
-                                      'destroy' : (obj) =>{
-                                        this.app.textreader.destroy(obj)
-                                      },
-                                      'colappase' : (param) =>{
-                                        this.app.textreader.colappase(param)
-                                      }
+                                      'value': ''
                                     }
-                                  ],
-                                  'dblclick' : (obj) => {
-                                    this.app.explorer.bild(obj)
-                                  },
-                                  'destroy' : (obj) =>{
-                                    this.app.explorer.destroy(obj)
-                                  },
-                                  'colappase' : (param) =>{
-                                    this.app.explorer.colappase(param)
-                                  }
+                                  ]
                                 },
                                 {
-                                  'image' : '../../assets/img/folder.png',
+                          
                                   'name' : 'folder2',
-                                  'size' : '124',
-                                  'date' : '09.02.2019',
-                                  'explorer' : true,
-                                  'id' : 1,
+                                  'type' : 'folder',
                                   'dir' : [
                                     {
                                       'name' : 'Textfile',
-                                      'size' : '124',
-                                      'date' : '19.04.2019',
-                                      'image' : '../../assets/img/text.png',
-                                      'id' : 2,
-                                      'text' : true,
+                                      'type' : 'txt',
                                       'change' : false,
-                                      'value': '',
-                                      'dblclick':(obj) => {
-                                        this.app.textreader.bild(obj);
-                                      },
-                                      'destroy' : (obj) =>{
-                                        this.app.textreader.destroy(obj)
-                                      },
-                                      'colappase' : (param) =>{
-                                        this.app.textreader.colappase(param)
-                                      }
+                                      'value': ''
                                     }
-                                  ],
-                                  'dblclick' : (obj) => {
-                                    this.app.explorer.bild(obj)
-                                  },
-                                  'destroy' : (obj) =>{
-                                    this.app.explorer.destroy(obj)
-                                  },
-                                  'colappase' : (param) =>{
-                                    this.app.explorer.colappase(param)
-                                  }
+                                  ]                                
                                 }
-                              ],
-                              'dblclick':(obj) => {
-                                this.app.explorer.bild(obj)
-                              },
-                              'destroy' : (obj) =>{
-                                this.app.explorer.destroy(obj)
-                              },
-                              'colappase' : (param) =>{
-                                this.app.explorer.colappase(param)
-                              }
+                              ]
                       },
                       {
-                        'image' : '../../assets/img/folder.png',
                         'name' : 'YourFolder',
-                        'id' : 1,
-                        'explorer' : true,
-                        'type' : 'Folder',
-                        'size' : '124',
-                        'date' : '09.02.2019',
+                        'type' : 'folder',
                         'dir' : [
                           {
-                            'image' : '../../assets/img/text.png',
                             'name' : 'Textfile',
-                            'size' : '124',
-                            'date' : '19.04.2019',
-                            'text' : true,
+                            'type' : 'txt',
                             'change' : false,
-                            'value': '',
-                            'dblclick':(obj) => {
-                              this.app.textreader.bild(obj);
-                            },
-                            'destroy' : (obj) =>{
-                              this.app.textreader.destroy(obj)
-                            },
-                            'colappase' : (param) =>{
-                              this.app.textreader.colappase(param)
-                            }
+                            'value': ''
                           },
                           {
-                            'image' : '../../assets/img/player.png',
-                            'name' : 'Video',
-                            'size' : '124',
-                            'date' : '19.04.2019',
-                            'id' : 0,
-                            'player' : true,
-                            'video' : true,
+                            'name' : 'BlackHole',
+                            'type' : 'mp4',
                             'source' : [
                                         {
                                           'src' : '../../assets/video/videoplayback.mp4',
                                           'type' : 'video/mp4'
                                         }
-                            ],
-                            'dblclick' :(obj) => {
-                              this.app.player.bild(obj);
-                            },
-                            'destroy' : (obj) =>{
-                              this.app.player.destroy(obj)
-                            },
-                            'colappase' : (param) =>{
-                              this.app.player.colappase(param)
-                            }
+                            ]
                           }
-                        ],
-                        'dblclick':(obj) => {
-                          this.app.explorer.bild(obj)
-                        },
-                        'destroy': (obj) =>{
-                          this.app.explorer.destroy(obj)
-                        },
-                        'colappase' : (param) =>{
-                          this.app.explorer.colappase(param)
-                        }
+                        ]
                       },
                       {
-                        'image' : '../../assets/img/text.png',
                         'name' : 'MyText',
-                        'id' : 2,
-                        'text' : true,
-                        'size' : '124',
-                        'date' : '09.02.2019',
+                        'type' : 'txt',
                         'change' : false,
-                        'value': '',
-                        'dblclick':(obj) => {
-                          this.app.textreader.bild(obj);
-                        },
-                        'destroy' : (obj) =>{
-                          this.app.textreader.destroy(obj)
-                        },
-                        'colappase' : (param) =>{
-                          this.app.textreader.colappase(param)
-                        }
+                        'value': ''
                       },
                       {
-                        'image' : '../../assets/img/player.png',
-                        'name' : 'Video',
-                        'id' : 0,
-                        'size' : '124',
-                        'date' : '09.02.2019',
-                        'player' : true,
-                        'video' : true,
+                        'name' : 'BlackHole',
+                        'type' : 'mp4',
                         'source' : [
                                     {
                                       'src' : '../../assets/video/videoplayback.mp4',
                                       'type' : 'video/mp4'
                                     }
-                        ],
-                        'dblclick' :(obj) => {
-                          this.app.player.bild(obj);
-                        },
-                        'destroy' : (obj) =>{
-                          this.app.player.destroy(obj)
-                        },
-                        'colappase' : (param) =>{
-                          this.app.player.colappase(param)
-                        }
+                        ]
                       },
                       {
-                        'image': '../../assets/img/player.png',
                         'name': 'Music',
-                        'id' : 2,
-                        'size' : '124',
-                        'date' : '09.02.2019',
-                        'player': true,
-                        'music': true,
-                        'dblclick':(obj) => {
-                          if(!this.playerActiv){
-                            this.app.player.bild(obj);
-                            this.playerActiv=true;
-                          }
-                          else{
-                            this.app.message.bild(this.message[1], obj);
-                          }
-                        },
-                        'destroy' : (obj) =>{
-                          this.app.player.destroy(obj);
-                          this.playerActiv=false;
-                        },
-                        'colappase' : (param) =>{
-                          this.app.player.colappase(param)
-                        }
+                        'type' : 'mp3'
                       }
-                    ],
-              'dblclick':(obj) => {
-                this.app.explorer.bild(obj)
-              },
-              'destroy' : (obj) =>{
-                this.app.explorer.destroy(obj)
-              },
-              'colappase' : (param) =>{
-                this.app.explorer.colappase(param)
-              }
+                    ]
             }
           ],
           'dblclick':(obj) => {
-            this.app.explorer.bild(obj)
+            this.app.explorer.bild(obj);
           },
           'destroy' : (obj) =>{
             this.app.explorer.destroy(obj)
@@ -684,14 +282,14 @@ app = {
   explorer :{  
     bild : (obj) => {
       var task = {
-          image: obj.image,
+          image:'../../assets/img/folder.png',
           name: obj.name,
           minimize: true,
           id: 0,
-          destroy: obj.destroy,
-          colappase: obj.colappase,
-          explorer: obj.explorer,
-          dir : obj.dir
+          type: obj.type,
+          destroy: this.app.explorer.destroy,
+          colappase: this.app.explorer.colappase,
+          dir : obj.dir,
       }
       task.id=this.taskCount;
       this.tasks.push(task);
@@ -712,12 +310,12 @@ app = {
   setting :{
       bild : (obj) => {
         var task = {
-            image: obj.image,
+            image: '../../assets/img/wranch.png',
             name: obj.name,
             minimize: true,
             id: 0,
-            destroy: obj.destroy,
-            colappase: obj.colappase,
+            destroy: this.app.setting.destroy,
+            colappase: this.app.setting.colappase,
             setting: obj.setting,
             desktopObj: obj.desktopObj
         }
@@ -741,16 +339,15 @@ app = {
   player:{ 
     bild: (obj) => {
     var task ={
-      image: obj.image,
+      image: '../../assets/img/player.png',
       name: obj.name,
       minimize: true,
       id: 0,
-      video : obj.video,
-      music: obj.music,
-      destroy: obj.destroy,
-      colappase: obj.colappase,
+      type: obj.type,
+      destroy: this.app.player.destroy,
+      colappase: this.app.player.colappase,
       source : obj.source,
-      player: obj.player,
+      player: true,
       audio: this.audio
     }
     task.id=this.taskCount;
@@ -809,13 +406,13 @@ app = {
   textreader :{
     bild : (obj) => {
       var task ={
-        image: obj.image,
+        image: '../../assets/img/text.png',
         name: obj.name,
         minimize: true,
         id: 0,
-        text : obj.text,
-        destroy: obj.destroy,
-        colappase: obj.colappase,
+        type: obj.type,
+        destroy: this.app.textreader.destroy,
+        colappase: this.app.textreader.colappase,
         value: obj,
         close: false
       }

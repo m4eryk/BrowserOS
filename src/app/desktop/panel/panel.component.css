@@ -3,8 +3,7 @@
     bottom: 35px;
     height: 400px;
     width: 500px;
-    background-color: black;
-
+    background-color: rgba(0, 0, 0, 0.842);
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -79,6 +78,17 @@
     margin-bottom: 12px;
     text-align: center;
 }
+.pc{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.pc p{
+    margin-left: 15px;
+    font-size: 22px;
+    text-transform: uppercase;
+}
 
 .wrapper-i{
     width: 100%;
@@ -89,7 +99,7 @@
 }
 
 .left-bar .wrapper-i:hover{
-    background-color: rgba(255, 246, 246, 0.5);
+    background-color: rgba(255, 246, 246, 0.829);
     color: black;
     cursor: pointer;
 }
@@ -98,10 +108,9 @@
 }
 
 .viewport{
-   
+    color:black;
     height: 350px;
     width: 160px;
-    border: 1px solid black;
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -112,6 +121,6 @@
 .item{
     height: 50px;
     margin-top: 10px;
-    background-color: rgba(255, 246, 246, 0.075);
+    background-color: rgba(255, 246, 246, 0.603);
     border-radius: 5px;
 }

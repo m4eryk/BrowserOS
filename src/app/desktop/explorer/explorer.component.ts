@@ -8,8 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ExplorerComponent implements OnInit {
 
   @Input() tas;
+  @Input() app;
+
   value:object;
   backValue=[];
+  img:object={ 
+      folder : '../../assets/img/folder.png',
+      text : '../../assets/img/text.png',
+      player : '../../assets/img/player.png'
+  }
 
   constructor() { }
   back(){
@@ -25,11 +32,17 @@ export class ExplorerComponent implements OnInit {
       this.value=param.dir;
     }
     else{
-      param.dblclick(param);
+      if(param.type == 'txt'){
+        this.app.textreader.bild(param);
+      }
+      else if(param.type == 'mp3' || param.type == 'mp4'){
+        this.app.player.bild(param);
+      }
     }
     
   }
   ngOnInit() {
+    console.log('explorer start');
     this.value=this.tas.dir;
     this.backValue.push(this.tas.dir);
   }

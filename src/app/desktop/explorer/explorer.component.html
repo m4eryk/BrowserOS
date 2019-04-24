@@ -1,9 +1,8 @@
-<div class="explorer" *ngIf='tas.explorer'>
+<div class="explorer">
     <div class="file head">
       <p (click)="back()"><i class="fas fa-arrow-left"></i></p>
       <p>NAME FILE</p>
-      <p>SIZE</p>
-      <p> DATE OF CHANGE</p>
+      <p> TYPE</p>
     </div>
      
     <div class="content" cdkDropList (cdkDropListDropped)="drop($event)">
@@ -11,11 +10,13 @@
       
           <div  class="item" cdkDrag *ngFor='let item of value'(dblclick)="changeValue(item)" >
             <div class="lable">
-                <img src="{{item.image}}" alt="label">
+                <img *ngIf="item.type=='folder'" src="{{img.folder}}" alt="label">
+                <img *ngIf="item.type=='txt'" src="{{img.text}}" alt="label">
+                <img *ngIf="item.type=='mp4'" src="{{img.player}}" alt="label">
+                <img *ngIf="item.type=='mp3'" src="{{img.player}}" alt="label">
                 <p>{{item.name}}</p>
             </div>
-              <p>{{item.size}} mb</p>
-              <p>{{item.date}}</p>
+              <p>{{item.type}}</p>
             </div>
       </ng-container>
     </div>

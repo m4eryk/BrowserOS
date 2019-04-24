@@ -8,8 +8,8 @@
     </div>
   </div>
   <hr>
-  <app-setting *ngIf='tas.setting' [desktopObj]='tas.desktopObj'></app-setting>
-  <app-textreader *ngIf='tas.text' [value]='tas.value' [tas]='tas'></app-textreader>
+  <app-setting *ngIf='tas.setting' [desktopObj]='tas.desktopObj' ></app-setting>
+  <app-textreader *ngIf="tas.type=='txt'" [value]='tas.value' [tas]='tas' ></app-textreader>
   <app-player *ngIf="tas.player" [source]="tas" ></app-player>
-  <app-explorer *ngIf="tas.explorer" [tas]='tas'></app-explorer>
+  <app-explorer *ngIf="tas.type=='folder'" [tas]='tas' [app]='app' ></app-explorer>
 </div>

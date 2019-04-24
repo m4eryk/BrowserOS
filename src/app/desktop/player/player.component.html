@@ -1,9 +1,9 @@
 <div class="wrapper">
-    <video *ngIf="source.video" controls>
+    <video *ngIf="source.type =='mp4'" controls>
         <source *ngFor="let item of source.source" src="{{item.src}}" type="{{item.type}}">
         I'm sorry; your browser doesn't support HTML5 video.
     </video>
-    <div class="wrappar-music"  *ngIf="!source.video">
+    <div class="wrappar-music"  *ngIf="source.type =='mp3'">
         <div class="player">
             <div class="banner">
             <img src="{{img}}" alt="baner">

@@ -20,7 +20,7 @@
       <app-messagebox  *ngIf='task.message' [tas]='task' [destroy]="task.destroy" [quest]="task.quest" [obj]="task.obj" ></app-messagebox>
     </div>
     <app-contextmenu *ngIf="contextmenu" [contextMenu]="contextMenu" [x]="contextmenuX" [y]="contextmenuY"></app-contextmenu>
-    <app-window *ngFor='let task of tasks' [tas]='task' [destroy]="task.destroy" [desktopSetting]="desktopSetting" ></app-window>
+    <app-window *ngFor='let task of tasks' [tas]='task' [destroy]="task.destroy" [desktopSetting]="desktopSetting" [app]='app' ></app-window>
   <app-nav-bar [tasks]="tasks" [shortcut]="shortcut" [audio]="audio" [exit]='exit' [setting]="contextMenu[0]"></app-nav-bar>
   </div>
 </div>

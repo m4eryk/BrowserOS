@@ -13,6 +13,7 @@ export class WindowComponent implements OnInit, OnDestroy {
   @Input() roll : boolean;
   @Input() destroy;
   @Input() desktopSetting;
+  @Input() app;
   path:string;
   x:string;
   y:string;
@@ -34,6 +35,7 @@ export class WindowComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    console.log(this.tas);
     this.x=this.desktopSetting.getWindowX()+'px';
     this.y=this.desktopSetting.getWindowY()+'px';
     this.top=this.y;
