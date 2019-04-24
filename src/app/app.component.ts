@@ -113,7 +113,6 @@ fs:object = {
             }
         ],
     'PC':{ 
-          'image' : '../../assets/img/PC.png',
           'name' : 'PC',
           'type' : 'folder',
           'dir':[
@@ -215,16 +214,7 @@ fs:object = {
                       }
                     ]
             }
-          ],
-          'dblclick':(obj) => {
-            this.app.explorer.bild(obj);
-          },
-          'destroy' : (obj) =>{
-            this.app.explorer.destroy(obj)
-          },
-          'colappase' : (param) =>{
-            this.app.explorer.colappase(param)
-          }
+          ]
       }
 }
 

@@ -1,7 +1,7 @@
 
 .window{
     position: fixed;
-    background-color: azure;
+    background-color: rgba(240, 255, 255, 0.808);
     border: 2px double gainsboro;
     color: black;
 

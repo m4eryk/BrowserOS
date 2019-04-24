@@ -22,11 +22,16 @@ export class TaskComponent implements OnInit {
   @Input() task: object[];
   @Output() clickChange: EventEmitter<boolean> = new EventEmitter();
   
+  img:object={ 
+    folder : '../../assets/img/folder.png',
+    text : '../../assets/img/text.png',
+    player : '../../assets/img/player.png'
+  }
   
   constructor() { }
 
   ngOnInit() {
-  }
+ }
   
   
   roll:boolean;

@@ -16,6 +16,7 @@ export class NavBarComponent implements OnInit {
   @Input() audio;
   @Input() exit;
   @Input() setting;
+  @Input() app;
 
   constructor() { }
 

@@ -13,12 +13,14 @@ export class PanelComponent implements OnInit {
   @Input() shortcut:object[];
   @Input() exit;
   @Input() setting;
+  @Input() app;
 
   day='';
   dayI='';
   time='';
 
   ngOnInit() {
+    console.log(this.shortcut)
     setInterval(()=>{
       let date= new Date()
       this.time=formatDate(date, 'HH:mm', 'en-US');
@@ -28,5 +30,16 @@ export class PanelComponent implements OnInit {
 
   }
 
-  items = Array.from({length: 100000}).map((_, i) => `Item #${i}`);
+  dblclick(obj){
+    if(obj.type == 'txt'){
+      this.app.textreader.bild(obj);
+    }
+    else if(obj.type == 'mp3' || obj.type == 'mp4'){
+      this.app.player.bild(obj);
+    }
+    else{
+      this.app.explorer.bild(obj);
+    }
+  }
+
 }

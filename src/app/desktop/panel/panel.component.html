@@ -17,12 +17,11 @@
     <div class="right-bar">
         <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
             <div *cdkVirtualFor="let item of shortcut" class="example-item">
-              <div *ngIf="item.name" class="item">
-                <app-task  [task]="item" [top]="'20px'" [direction]="'column'" (dblclick)="item.dblclick(item)"></app-task>
+              <div *ngIf="item.name" class="item">  
+                <app-task  [task]="item" [top]="'20px'" [direction]="'column'" (dblclick)="dblclick(item)"></app-task>
               </div>
             </div>
           </cdk-virtual-scroll-viewport>
-    
         <div class="prof">
           <p class="name">Alexandr Mayorov<p>
             <div class="today">
@@ -33,9 +32,8 @@
                 <p class="time">{{time}}</p>
             </div>
           <div class="programms">
-              <i class="fas fa-file-image fa-3x"><span>Picture</span></i>
-              <div class="pc">
-                <img src="../../assets/img/PC.png" alt="pc" width="50px" height="50px" > 
+              <div class="prgrmm">
+                <img src="../../assets/img/PC.png" alt="pc" width="50px" height="50px" (dblclick)="dblclick(shortcut[5])"> 
                 <p>PC</p>
               </div>
           </div>

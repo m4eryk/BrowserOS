@@ -78,13 +78,23 @@
     margin-bottom: 12px;
     text-align: center;
 }
-.pc{
+.prgrmm{
+    border-radius: 4px;
     margin-top: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    cursor: pointer;
+    width: 120px;
+    height: 60px;
 }
-.pc p{
+.prgrmm img{
+    margin-left: 5px;
+}
+.prgrmm:hover{
+    background-color: rgba(0, 0, 0, 0.63)
+}
+.prgrmm p{
     margin-left: 15px;
     font-size: 22px;
     text-transform: uppercase;
