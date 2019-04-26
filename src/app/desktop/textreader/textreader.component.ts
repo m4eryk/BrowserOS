@@ -15,7 +15,6 @@ export class TextreaderComponent implements OnInit {
   ngOnInit() {
 
     setInterval(()=>{
-      console.log(this.value.change+' change')
       if( this.tas.close == true ){
         this.tas.destroy(this.tas)
       }
@@ -24,7 +23,6 @@ export class TextreaderComponent implements OnInit {
   }
 
   setValue(value){
-   console.log(this.value.change);
     this.value.change=false;
     this.value.value=value;
   }

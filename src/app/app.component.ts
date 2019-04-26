@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Md5 } from 'ts-md5/dist/md5';
+import { Key } from 'protractor';
 
 
 @Component({
@@ -19,206 +21,133 @@ openWind:number[]=[];
 
 desktopIsActivete:boolean;
 
-fs:object = {
-  'Desktop': [
-            {
-              'name' : 'MyFolder',
-              'type' : 'folder',
-              'dir':[
-                      {
-                        'name' : 'folder1',
-                        'type' : 'folder',
-                        'dir' : [
-                          {
-                            'name' : 'Textfile',
-                            'type' : 'txt',
-                            'change' : false,
-                            'value': ''
-                          },
-                          {
-                            'name' : 'Textfile',
-                            'type' : 'txt',
-                            'change' : false,
-                            'value': ''
-                          }
-                        ]
-                      },
-                      {
-                        'name' : 'folder2',
-                        'type' : 'folder',
-                        'dir' : [
-                          {
-                            'name' : 'Textfile',
-                            'type' : 'txt',
-                            'change' : false,
-                            'value': ''
-                          }
-                        ]
-                      },
-                      {
-                        'name' : 'folder2',
-                        'type' : 'folder',
-                        'dir' : [
-                          {
-                            'name' : 'Textfile',
-                            'type' : 'txt',
-                            'change' : false,
-                            'value': ''
-                          }
-                        ]
-                      }
-                    ],
-            },
-            {
-              'name' : 'YourFolder',
-              'type' : 'folder',
-              'dir' : [
-                {
-                  'name' : 'Textfile',
-                  'type' : 'txt',
-                  'change' : false,
-                  'value': ''
-                },
-                {
-                  'name' : 'BlackHole',
-                  'type' : 'mp4',
-                  'source' : [
-                              {
-                                'src' : '../../assets/video/videoplayback.mp4',
-                                'type' : 'video/mp4'
-                              }
-                  ]
-                }
-              ],
-            },
-            {
-              'name' : 'MyText',
-              'type' : 'txt',
-              'change' : false,
-              'value': ''
-            },
-            {
-              'name' : 'BlackHole',
-              'type' : 'mp4',
-              'source' : [
-                          {
-                            'src' : '../../assets/video/videoplayback.mp4',
-                            'type' : 'video/mp4'
-                          }
-              ]
-            },
-            {
-              'name' : 'Music',
-              'type' : 'mp3'
-            }
-        ],
-    'PC':{ 
-          'name' : 'PC',
-          'type' : 'folder',
-          'dir':[
-            {
-              'name' : 'DiskC',
-              'type' : 'folder',
-              'dir':[
-                      {
-                        'name' : 'MyFolder',
-                        'type' : 'folder',
-                        'dir':[
-                                {
-                          
-                                  'name' : 'folder1',
-                                  'type' : 'folder',
-                                  'dir' : [
-                                    {
-                                      'name' : 'Textfile',
-                                      'type' : 'txt',
-                                      'change' : false,
-                                      'value': ''
-                                    },
-                                    {
-                                      'name' : 'Textfile',
-                                      'type' : 'txt',
-                                      'change' : false,
-                                      'value': ''
-                                    }
-                                  ]
-                                },
-                                {
-                                  'name' : 'folder2',
-                                  'type' : 'folder',
-                                  'dir' : [
-                                    {
-                                      'name' : 'Textfile',
-                                      'type' : 'txt',
-                                      'change' : false,
-                                      'value': ''
-                                    }
-                                  ]
-                                },
-                                {
-                          
-                                  'name' : 'folder2',
-                                  'type' : 'folder',
-                                  'dir' : [
-                                    {
-                                      'name' : 'Textfile',
-                                      'type' : 'txt',
-                                      'change' : false,
-                                      'value': ''
-                                    }
-                                  ]                                
-                                }
-                              ]
-                      },
-                      {
-                        'name' : 'YourFolder',
-                        'type' : 'folder',
-                        'dir' : [
-                          {
-                            'name' : 'Textfile',
-                            'type' : 'txt',
-                            'change' : false,
-                            'value': ''
-                          },
-                          {
-                            'name' : 'BlackHole',
-                            'type' : 'mp4',
-                            'source' : [
-                                        {
-                                          'src' : '../../assets/video/videoplayback.mp4',
-                                          'type' : 'video/mp4'
-                                        }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        'name' : 'MyText',
-                        'type' : 'txt',
-                        'change' : false,
-                        'value': ''
-                      },
-                      {
-                        'name' : 'BlackHole',
-                        'type' : 'mp4',
-                        'source' : [
-                                    {
-                                      'src' : '../../assets/video/videoplayback.mp4',
-                                      'type' : 'video/mp4'
-                                    }
-                        ]
-                      },
-                      {
-                        'name': 'Music',
-                        'type' : 'mp3'
-                      }
-                    ]
-            }
-          ]
-      }
+
+
+TS = {
+  '0':{
+    'name':'MyFolder',
+    'type': 'folder',
+    'key' : ['8']
+  },
+  '1':{
+    'name':'YourFolder',
+    'type':'folder',
+    'key' :['2']
+  },
+  '2':{
+    'name' : 'BlackHole',
+    'type' : 'mp4',
+    'key' : ['15']
+  },
+  '3' : {
+    'name' : 'textFile',
+    'type' : 'txt',
+    'key' : ['18']
+  },
+  '4' : {
+    'name' : 'Desktop',
+    'type' : 'folder',
+    'key' : ['0','1','2','3','5','13']
+  },
+  '5' : {
+    'name' : 'PC',
+    'type' : 'folder',
+    'key' : ['6','7']
+  },
+  '6' : {
+    'name' : 'DickC',
+    'type' : 'folder',
+    'key' : ['4']
+  },
+  '7' : {
+    'name' : 'DickD',
+    'type' : 'folder',
+    'key' : ['2']
+  },
+  '8' : {
+    'name' : 'folder1',
+    'type' : 'folder',
+    'key' : ['10','9']
+  },
+  '9' : {
+    'name' : 'folder2',
+    'type' : 'folder',
+    'key' : ['11']
+  },
+  '10' : {
+    'name' : 'folder3',
+    'type' : 'folder',
+    'key' : ['12']
+  },
+  '11' : {
+    'name' : 'textFile',
+    'type' : 'txt',
+    'key' : ['17']
+  },
+  '12' : {
+    'name' : 'textFile',
+    'type' : 'txt',
+    'key' : ['16']
+  },
+  '13' : {
+    'name' : 'Краимбрери',
+    'type' : 'mp3',
+    'key' : ['14']
+  },
+  getData : (key:string[]) =>{
+    var obj:object[]=[];
+    for ( var i=0; i < key.length ; i++){
+      obj.push(this.DataArray.get(key[i]));
+    }
+    return obj;
+  }
 }
 
-Map = new Map(Object.entries(this.fs));
+Data = {
+  '0' : this.TS[0],
+  '1' : this.TS[1],
+  '2' : this.TS[2],
+  '3' : this.TS[3],
+  '4' : this.TS[4],
+  '5' : this.TS[5],
+  '6' : this.TS[6],
+  '7' : this.TS[7],
+  '8' : this.TS[8],
+  '9' : this.TS[9],
+  '10' : this.TS[10],
+  '11' : this.TS[11],
+  '12' : this.TS[12],
+  '13' : this.TS[13],
+  '14': {
+    'src' :"../assets/music/Мари Краимбрери – Ты полюби меня пьяную.mp3",
+    'title' : "Ты полюби меня пьяную",
+    'artist' : "Мари Краимбрери",
+    'img' : '../assets/img/song/pyanay.jpg',
+    'id': 0
+  },
+  '15' : {
+    'src' : '../assets/video/videoplayback.mp4',
+    'type' : 'video/mp4'
+  },
+  '16' : {
+    'value' : ''
+  },
+  '17' : {
+    'value' : ''
+  },
+  '18' : {
+    'value' : ''
+  },
+ /* getTableElm: (key:string)=>{
+      return this.Table.get(key);
+    }
+  }*/
+}
+
+
+Table = new Map(Object.entries(this.TS));
+DataArray = new Map(Object.entries(this.Data));
+
 
 message:object=[
   {
@@ -245,7 +174,6 @@ message:object=[
     }
   }
 ]
-
 
 app = {
   launcher : {
@@ -279,7 +207,7 @@ app = {
           type: obj.type,
           destroy: this.app.explorer.destroy,
           colappase: this.app.explorer.colappase,
-          dir : obj.dir,
+          dir : this.TS.getData(obj.key),
       }
       task.id=this.taskCount;
       this.tasks.push(task);
@@ -336,7 +264,7 @@ app = {
       type: obj.type,
       destroy: this.app.player.destroy,
       colappase: this.app.player.colappase,
-      source : obj.source,
+      source : this.TS.getData(obj.key),
       player: true,
       audio: this.audio
     }
@@ -403,7 +331,7 @@ app = {
         type: obj.type,
         destroy: this.app.textreader.destroy,
         colappase: this.app.textreader.colappase,
-        value: obj,
+        value: this.TS.getData(obj.key),
         close: false
       }
       task.id=this.taskCount;
@@ -427,15 +355,19 @@ app = {
     colappase : (param) =>{
       param.minimize=!param.minimize;
     }
-  }   
+  },
+   
 }
 
- exit = () =>{
+exit = () =>{
   this.app.launcher.destroy();
 }
-ngOnInit(){
 
-  this.app.launcher.bild();
+ngOnInit(){  
+  var abj=this.DataArray.get('18')
+ console.log(abj);
+ this.app.launcher.bild();
+
 }
 
 

@@ -9,7 +9,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class DesktopPageComponent implements OnInit {
 
-@Input() map;
+@Input() TS;
 @Input() app;
 @Input() audio;
 @Input() tasks;
@@ -19,7 +19,7 @@ contextmenu:boolean = false;
 contextmenuX:number = 0;
 contextmenuY:number = 0;
 arr = new Map();
-shortcut:object[];
+shortcut:object[]=[];
 windowX=200;
 windowY=50;
 
@@ -200,10 +200,9 @@ constructor(){
 }
 
 ngOnInit() {
-  this.shortcut= this.map.get('Desktop');
-  this.shortcut.push(this.map.get('PC'));
-  console.log(this.shortcut);
-  
+  for(var item of this.TS.getData(this.TS[4].key)){
+    this.shortcut.push(item);
+  }
   var widht = Math.round(window.outerWidth/100), height = Math.round(window.outerHeight/113);
   for( let i =0 ; i < height ; i++ ) {
     if( i > this.shortcut.length-2 ){

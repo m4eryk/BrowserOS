@@ -14,6 +14,8 @@ export class WindowComponent implements OnInit, OnDestroy {
   @Input() destroy;
   @Input() desktopSetting;
   @Input() app;
+  @Input() TS;
+
   path:string;
   x:string;
   y:string;
@@ -42,15 +44,11 @@ export class WindowComponent implements OnInit, OnDestroy {
     this.left=this.x;
   }
 
- 
-  
-
-
   toggle(){
    this.roll=false;
   }
 
- sizing(){
+  sizing(){
     if(this.height != '460px'){
       return '460px';
     }
