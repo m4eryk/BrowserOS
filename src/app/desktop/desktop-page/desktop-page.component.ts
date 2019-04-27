@@ -90,42 +90,21 @@ contextMenu:object=[
               name:'Folder',
               click: () =>{
                 var folder = {
-                  image: '../../assets/img/folder.png',
+                  type: 'folder',
                   name: 'Folder',
-                  id :0,
-                  explorer: true,
-                  dblclick:(obj) => {
-                    this.app.explorer.bild(obj)
-                  },
-                  destroy : (obj) =>{
-                    this.app.explorer.destroy(obj)
-                  },
-                  colappase : (param) =>{
-                    this.app.explorer.colappase(param)
-                  }
                 }
-                this.addShorcat(folder);
               }
             },
             {
               name:'Text',
               click: () =>{
                 var text= {
-                  image: '../../assets/img/text.png',
+                  type: 'txt',
                   name: 'MyText',
                   id :2,
                   text: true,
                   value: '',
-                  change: false,
-                  dblclick:(obj) => {
-                    this.app.textreader.bild(obj);
-                  },
-                  destroy : (obj) =>{
-                    this.app.textreader.destroy(obj)
-                  },
-                  colappase : (param) =>{
-                    this.app.textreader.colappase(param)
-                  }
+                  change: false
                 }
                 this.addShorcat(text);
               }
@@ -200,9 +179,10 @@ constructor(){
 }
 
 ngOnInit() {
-  for(var item of this.TS.getData(this.TS[4].key)){
-    this.shortcut.push(item);
+  for(var item of this.TS.getData.folder(this.TS[4].key)){
+      this.shortcut.push(item);
   }
+  console.log(this.shortcut);
   var widht = Math.round(window.outerWidth/100), height = Math.round(window.outerHeight/113);
   for( let i =0 ; i < height ; i++ ) {
     if( i > this.shortcut.length-2 ){

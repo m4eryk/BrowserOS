@@ -37,12 +37,12 @@ TS = {
   '2':{
     'name' : 'BlackHole',
     'type' : 'mp4',
-    'key' : ['15']
+    'key' : '15'
   },
   '3' : {
     'name' : 'textFile',
     'type' : 'txt',
-    'key' : ['18']
+    'key' : '18'
   },
   '4' : {
     'name' : 'Desktop',
@@ -82,42 +82,85 @@ TS = {
   '11' : {
     'name' : 'textFile',
     'type' : 'txt',
-    'key' : ['17']
+    'key' : '17'
   },
   '12' : {
     'name' : 'textFile',
     'type' : 'txt',
-    'key' : ['16']
+    'key' : '16'
   },
   '13' : {
     'name' : 'Краимбрери',
     'type' : 'mp3',
-    'key' : ['14']
+    'key' : '14'
   },
-  getData : (key:string[]) =>{
-    var obj:object[]=[];
-    for ( var i=0; i < key.length ; i++){
-      obj.push(this.DataArray.get(key[i]));
+  getData :{ 
+    folder:(key:string[]) =>{
+      var obj:object[]=[];
+      for ( var i in key){
+        var item=this.DataArray.get(key[i]);
+        obj.push(this.TS.getData.checkData(item, key[i]))
+      }
+      return obj;
+    },
+    file: (key:string) => {
+      var item= this.DataArray.get(key)
+      return this.TS.getData.checkData(item, key);
+    },
+    checkData: (item, key)=>{
+      if(typeof(item) == 'function'){
+        return item(key);
+      }
+      else{
+        return item;
+      }
     }
-    return obj;
   }
 }
 
 Data = {
-  '0' : this.TS[0],
-  '1' : this.TS[1],
-  '2' : this.TS[2],
-  '3' : this.TS[3],
-  '4' : this.TS[4],
-  '5' : this.TS[5],
-  '6' : this.TS[6],
-  '7' : this.TS[7],
-  '8' : this.TS[8],
-  '9' : this.TS[9],
-  '10' : this.TS[10],
-  '11' : this.TS[11],
-  '12' : this.TS[12],
-  '13' : this.TS[13],
+  '0' : (key) =>{
+   return this.Data.getTableElm(key);
+  },
+  '1' : (key) =>{
+    return this.Data.getTableElm(key);
+  },
+  '2' : (key) =>{
+    return this.Data.getTableElm(key);
+  },
+  '3' : (key) =>{
+    return this.Data.getTableElm(key);
+  },
+  '4' : (key) =>{
+    return this.Data.getTableElm(key);
+  },
+  '5' : (key) =>{
+    return this.Data.getTableElm(key);
+  },
+  '6' : (key) =>{
+    return this.Data.getTableElm(key);
+  },
+  '7' : (key) =>{
+    return this.Data.getTableElm(key);
+  },
+  '8' : (key) =>{
+    return this.Data.getTableElm(key);
+  },
+  '9' : (key) =>{
+    return this.Data.getTableElm(key);
+  },
+  '10' : (key) =>{
+    return this.Data.getTableElm(key);
+  },
+  '11' : (key) =>{
+    return this.Data.getTableElm(key);
+  },
+  '12' : (key) =>{
+    return this.Data.getTableElm(key);
+  },
+  '13' : (key) =>{
+    return this.Data.getTableElm(key);
+  },
   '14': {
     'src' :"../assets/music/Мари Краимбрери – Ты полюби меня пьяную.mp3",
     'title' : "Ты полюби меня пьяную",
@@ -138,10 +181,9 @@ Data = {
   '18' : {
     'value' : ''
   },
- /* getTableElm: (key:string)=>{
+  getTableElm: (key:string)=>{
       return this.Table.get(key);
-    }
-  }*/
+  }
 }
 
 
@@ -207,7 +249,7 @@ app = {
           type: obj.type,
           destroy: this.app.explorer.destroy,
           colappase: this.app.explorer.colappase,
-          dir : this.TS.getData(obj.key),
+          dir : this.TS.getData.folder(obj.key),
       }
       task.id=this.taskCount;
       this.tasks.push(task);
@@ -264,7 +306,7 @@ app = {
       type: obj.type,
       destroy: this.app.player.destroy,
       colappase: this.app.player.colappase,
-      source : this.TS.getData(obj.key),
+      source : this.TS.getData.file(obj.key),
       player: true,
       audio: this.audio
     }
@@ -331,7 +373,7 @@ app = {
         type: obj.type,
         destroy: this.app.textreader.destroy,
         colappase: this.app.textreader.colappase,
-        value: this.TS.getData(obj.key),
+        value: this.TS.getData.file(obj.key),
         close: false
       }
       task.id=this.taskCount;
@@ -364,8 +406,8 @@ exit = () =>{
 }
 
 ngOnInit(){  
-  var abj=this.DataArray.get('18')
- console.log(abj);
+
+ console.log(this.Data.getTableElm('0'));
  this.app.launcher.bild();
 
 }

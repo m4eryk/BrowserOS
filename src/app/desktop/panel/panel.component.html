@@ -18,7 +18,7 @@
         <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
             <div *cdkVirtualFor="let item of shortcut" class="example-item">
               <div *ngIf="item.name" class="item">  
-                <app-task  [task]="item" [top]="'20px'" [direction]="'column'" (dblclick)="dblclick(item)"></app-task>
+                <app-task  [task]="item" [top]="'20px'" [color]="none" [direction]="'column'" (dblclick)="dblclick(item)"></app-task>
               </div>
             </div>
           </cdk-virtual-scroll-viewport>
@@ -33,7 +33,7 @@
             </div>
           <div class="programms">
               <div class="prgrmm">
-                <img src="../../assets/img/PC.png" alt="pc" width="50px" height="50px" (dblclick)="dblclick(shortcut[5])"> 
+                <img src="../../assets/img/PC.png" alt="pc" width="50px" height="50px" (dblclick)="dblclick(shortcut[4])"> 
                 <p>PC</p>
               </div>
           </div>

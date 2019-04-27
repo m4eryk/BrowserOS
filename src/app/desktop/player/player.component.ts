@@ -105,7 +105,7 @@ export class PlayerComponent implements OnInit {
   }
 
   ngOnInit() {
-    var obj=this.source[0];
+    var obj=this.source;
     console.log(obj)
     this.music.push(obj)
     console.log(this.music)

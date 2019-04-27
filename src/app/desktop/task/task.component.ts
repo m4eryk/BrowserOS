@@ -17,9 +17,10 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 })
 export class TaskComponent implements OnInit {
 
-  @Input()  direction:string;
-  @Input()  top:string;
+  @Input() direction:string;
+  @Input() top:string;
   @Input() task: object[];
+  @Input() color:string; 
   @Output() clickChange: EventEmitter<boolean> = new EventEmitter();
   
   img:object={ 

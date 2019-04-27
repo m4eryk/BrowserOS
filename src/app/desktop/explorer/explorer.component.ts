@@ -32,7 +32,7 @@ export class ExplorerComponent implements OnInit {
     console.log(param)
     if(param.key && param.type=='folder'){
       this.backValue.push(this.value);
-      this.value=this.TS.getData(param.key);
+      this.value=this.TS.getData.folder(param.key);
     }
     else{
       if(param.type == 'txt'){

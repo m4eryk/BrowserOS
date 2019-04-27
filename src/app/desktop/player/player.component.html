@@ -1,6 +1,6 @@
 <div class="wrapper">
     <video *ngIf="tas.type =='mp4'" controls>
-        <source *ngFor="let item of tas.source" src="{{item.src}}" type="{{item.type}}">
+        <source src="{{source.src}}" type="{{source.type}}">
         I'm sorry; your browser doesn't support HTML5 video.
     </video>
     <div class="wrappar-music"  *ngIf="tas.type =='mp3'">
