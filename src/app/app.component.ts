@@ -19,7 +19,6 @@ taskCount:number=0;
 tasks:object[]=[];
 openWind:number[]=[];
 
-desktopIsActivete:boolean;
 
 
 
@@ -190,6 +189,11 @@ Data = {
 Table = new Map(Object.entries(this.TS));
 DataArray = new Map(Object.entries(this.Data));
 
+state = {
+  Loading : true,
+  Work : false,
+  Off : false
+}
 
 message:object=[
   {
@@ -229,14 +233,18 @@ app = {
       task.id=this.taskCount;
       this.tasks.push(task);
       this.taskCount++;
-      this.desktopIsActivete=true;
+      this.state.Work=true;
+      this.state.Loading=false;
+      this.state.Off=false;
     },
     destroy : () => {
       let n= this.tasks.length;
       while(n--) {
           this.tasks.splice(n, 1);
       }
-      this.desktopIsActivete=false;
+      this.state.Work=false;
+      this.state.Loading=false;
+      this.state.Off=true;
     }
   },
   explorer :{  
@@ -405,14 +413,17 @@ exit = () =>{
   this.app.launcher.destroy();
 }
 
+loading(){
+  this.state.Loading=true;
+  setTimeout(()=>{   
+    this.app.launcher.bild();
+  },10000)
+}
+
 ngOnInit(){  
-
- console.log(this.Data.getTableElm('0'));
- this.app.launcher.bild();
+  this.loading()
+}
 
 }
 
 
-
-
-}
