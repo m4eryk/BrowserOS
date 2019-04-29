@@ -1,0 +1,7 @@
+<div class="wrapper" (dblclick)="dblclick(cut)">
+  <img *ngIf="cut.type=='folder'" src="{{img.folder}}" alt="label">
+  <img *ngIf="cut.type=='txt'" src="{{img.text}}" alt="label">
+  <img *ngIf="cut.type=='mp4'" src="{{img.player}}" alt="label">
+  <img *ngIf="cut.type=='mp3'" src="{{img.player}}" alt="label">
+  <p>{{cut.name}}</p>
+</div>

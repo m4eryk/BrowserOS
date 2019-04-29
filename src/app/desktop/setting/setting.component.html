@@ -1,0 +1,20 @@
+<div class="wrapper">
+    <h2>Desktop setting</h2>
+    <div class="url">
+        <h3>Chouse your image</h3> 
+        <button class="btn" (click)="desktopObj.setBackground(url.value)">Applay</button>
+        <input #url type="text" (click)="desktopObj.isBackgroundImg=true" >
+    </div>  
+    <div class="container">
+        <h3>Pick image</h3>
+        <div class="color" >
+          <img *ngFor="let img of image" src="{{img.src}}" alt="{{img.alt}}" (click)="desktopObj.setBackground(img.src)" (click)="desktopObj.isBackgroundImg=true">
+        </div>
+    </div>
+    <div class="container">
+        <h3>Pick color</h3>
+        <div class="color" (click)="desktopObj.setBackground(getColor())">
+          <div *ngFor="let bx of box" [style.background-color]="bx" class="box"(click)="color=bx"></div>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,22 @@
+.wrapper{
+    position: relative;
+    width: 90px;
+    height: 100px;
+    color: black;
+    align-items: center;
+    text-align: center;
+
+    display: block;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapper img{
+    margin-top: 5px;
+    width: 80px;
+    height: 70px;
+}
+.wrapper:hover{
+    background-color: #aaaaaa3a;
+    cursor: pointer;
+}

@@ -1,0 +1,86 @@
+.explorer{
+    height: 100%;
+}
+.file{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 15px;
+    text-align: left;
+    cursor: pointer;
+    width: 95%;
+}
+.head p{
+    font-weight: bold;
+    margin-right:5px;
+    margin-left:20px;
+}
+#type{
+    margin-left: 160px;
+}
+.item p{
+    margin-right:50px;
+}
+.lable{
+    margin-right:47px;
+    margin-left:30px;
+}
+.item{
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    cursor: pointer;
+    width: 90%;
+    margin-left:10px;
+}
+.item img{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+.item:hover{
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+.lable{
+    width: 40px;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.content{
+    width: 90%;
+    border: 2px double gainsboro;
+    margin-left: 20px;
+    height: 80%;
+    background-color: rgb(252, 252, 252);
+    border-radius: 4px;
+    margin-top: 5px;
+}
+  
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    margin-top: 40px;
+transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.file:last-child {
+    margin-top: 40px;
+border: none;
+}
+
+.content.cdk-drop-list-dragging .file:not(.cdk-drag-placeholder) {
+    margin-top: 40px;
+transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

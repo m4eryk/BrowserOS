@@ -1,0 +1,11 @@
+<div *ngIf="task.type" class="wrapper" (click)="click()" [ngStyle]="{'flex-direction': direction}"> 
+        
+        <div class="icons" [ngStyle]="{'margin-top': top, 'background-color' : color}">
+            <img *ngIf="task.type=='folder'" src="{{img.folder}}" alt="label">
+            <img *ngIf="task.type=='txt'" src="{{img.text}}" alt="label">
+            <img *ngIf="task.type=='mp4'" src="{{img.player}}" alt="label">
+            <img *ngIf="task.type=='mp3'" src="{{img.player}}" alt="label">
+            <span>{{task.name}}</span>
+        </div>
+        
+</div>

@@ -1,0 +1,24 @@
+<div class="explorer">
+    <div class="file head">
+      <p (click)="back()"><i class="fas fa-arrow-left"></i></p>
+      <p id='name'>NAME FILE</p>
+      <p id='type'> TYPE</p>
+    </div>
+     
+    <div class="content" cdkDropList (cdkDropListDropped)="drop($event)">
+      <div class="box">
+          <ng-container *ngIf='tas.dir'>
+              <div  class="item" cdkDrag *ngFor='let item of value'(dblclick)="changeValue(item)" >
+                <div class="lable">
+                    <img *ngIf="item.type=='folder'" src="{{img.folder}}" alt="label">
+                    <img *ngIf="item.type=='txt'" src="{{img.text}}" alt="label">
+                    <img *ngIf="item.type=='mp4'" src="{{img.player}}" alt="label">
+                    <img *ngIf="item.type=='mp3'" src="{{img.player}}" alt="label">
+                    <p>{{item.name}}</p>
+                </div>
+                  <p id='type'>{{item.type}}</p>
+              </div>
+          </ng-container>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <div class="desktop list" [ngStyle]="desktopSetting.getBackground()" (click)="disableContextMenu()" (contextmenu)="onRightClick($event)" ondragenter="return dragEnter(event)"  oncontextmenu="return false" ondrop="return dragDrop(event)" ondragover="return dragOver(event)">
+    <div cdkDropListGroup class="container">
+      <div class="example">
+        <div cdkDropList [cdkDropListData]="shortcut" class="example-list" (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor='let cut of shortcut' cdkDrag>
+              <app-shortcut *ngIf='cut.name'  [cut]="cut" [app]='app' ></app-shortcut>
+              <div *ngIf='!cut.image' class="box"></div>
+          </div>
+        </div>
+      </div>
+          <div *ngFor="let item of grid" cdkDropList [cdkDropListData]="item" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let itm of item" cdkDrag >
+              <app-shortcut *ngIf='itm.name'  [cut]="itm" [app]='app' ></app-shortcut>
+              <div *ngIf="!itm.name" class="box"></div>
+            </div>
+          </div>
+      </div>
+    <div *ngFor='let task of tasks'>
+      <app-messagebox  *ngIf='task.message' [tas]='task' [destroy]="task.destroy" [quest]="task.quest" [obj]="task.obj" ></app-messagebox>
+    </div>
+    <app-contextmenu *ngIf="contextmenu" [contextMenu]="contextMenu" [x]="contextmenuX" [y]="contextmenuY"></app-contextmenu>
+    <app-window *ngFor='let task of tasks' [tas]='task' [destroy]="task.destroy" [desktopSetting]="desktopSetting" [app]='app' [TS]='TS'></app-window>
+  <app-nav-bar [tasks]="tasks" [shortcut]="shortcut" [audio]="audio" [exit]='exit' [setting]="contextMenu[0]" [app]='app'></app-nav-bar>
+  </div>
+</div>
