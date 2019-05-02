@@ -182,13 +182,8 @@ constructor(){
 
 
 ngOnInit() {
-  var shrt:object[]=[];
-  console.log(this.TS[0].key)
-  for(var k of this.TS[0].key){
-  var obj=[];
-  obj=this.data.file(k);
-  this.shortcut.push(obj)
-  }
+  console.log(this.TS)
+  
   setTimeout(() => this.addGrid(),2000)
   
   
@@ -198,7 +193,6 @@ addGrid(){
   for(var i=0; i < this.shortcut.length; i++){
     this.shortcut[i]=this.shortcut[i][0];
 }     
-  console.log(this.shortcut)
   var widht = Math.round(window.outerWidth/100), height = Math.round(window.outerHeight/113);
   for( let i =0 ; i < height ; i++ ) {
     if( i > this.shortcut.length-2 ){

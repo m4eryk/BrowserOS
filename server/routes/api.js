@@ -6,11 +6,15 @@ router.get('/', (req, res)=>{
     res.send('from api')
 })
 
+router.get('/data', (req,res)=>{
+    res.send(TS)
+})
+
 router.post('/data/folder', (req, res) =>{
     let key=req.body
     if(typeof(key)=='string'){
-        let obj=TS.getData.folder(key);
-        res.json(obj)
+        let obj=getData.folder(key);
+        res.send(obj)
     }
     else{
         res.status('404');
@@ -20,7 +24,7 @@ router.post('/data/folder', (req, res) =>{
 router.post('/data/file', (req,res) =>{
     let key=req.body
     if(typeof(key)=='string'){
-        let obj=TS.getData.file(key);
+        let obj=getData.file(key);
         res.send(obj)
     }
     else{
@@ -98,30 +102,34 @@ var TS = {
       'name' : 'Краимбрери',
       'type' : 'mp3',
       'key' : '14'
-    },
-    getData :{ 
-      folder:(key) =>{
-        var obj = [];
-        for ( var i of key){
-          var item = DataArray.get(key[i]);
-          obj.push(TS.getData.checkData(item, key[i]))
-          
-        }
-        return obj;
-      },
-      file: (key) => {
-        var item = DataArray.get(key)
-        return TS.getData.checkData(item, key);
-      },
-      checkData: (item, key)=>{
-        if(typeof(item) == 'function' && item != null){
-          return item(key);
-        }
-        else if(item != null){
-          return item;
-        }
-      }
     }
+}
+
+var getData = { 
+  folder:(key) =>{
+    var obj = [];
+    console.log(key);
+    for ( var i of key){
+      console.log(typeof(key));
+      var item = DataArray.get(key[i]);
+      console.log(key[i]);
+      obj.push(getData.checkData(item, key[i]))
+    }
+    
+    return obj;
+  },
+  file: (key) => {
+    var item = DataArray.get(key)
+    return getData.checkData(item, key);
+  },
+  checkData: (item, key)=>{
+    if(typeof(item) == 'function' && item != null){
+      return item(key);
+    }
+    else if(item != null){
+      return item;
+    }
+  }
 }
 
 var Data = {

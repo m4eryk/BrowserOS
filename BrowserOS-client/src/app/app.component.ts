@@ -91,12 +91,7 @@ app = {
           type: obj.type,
           destroy: this.app.explorer.destroy,
           colappase: this.app.explorer.colappase,
-          dir : this._Data.getData.folder(obj.key)
-          .subscribe(
-            res => { return this.TableArray = res }
-            ,
-            err => console.log(err)
-          ),
+         // dir :
       }
       task.id=this.taskCount;
       this.tasks.push(task);
@@ -249,7 +244,7 @@ app = {
 }
 
 
-TableArray={};
+desktopArray:object[]=[];
 
 exit = () =>{
   this.app.launcher.destroy();
@@ -259,37 +254,60 @@ loading(){
   this.state.Loading=true;
   setTimeout(()=>{   
     this.app.launcher.bild();
-  },2000)
+  },6000)
 }
 
 
+TS:object={};
 
 getData={
-  file : (key) =>{
-    var item=[];
-    this._Data.getData.file(key).subscribe(
-      res => { item.push(res) }
+  file : (key,obj) =>{
+   return this._Data.getData.file(key).subscribe(
+      res => { obj={res}
+        console.log(obj)
+       }
     )
-    for(var i of item){
-    }
-    return item;
   },
   folder : (key) =>{
     var item=[];
     this._Data.getData.folder(key).subscribe(
-      res => { item.push(res) }
+      res =>  console.log(res)
     )
     return item;
   },
-
+  data: () =>{
+    return this._Data.getData.data().subscribe(
+      res => this.TS=this.getData.returnObj(res, this.TS)
+    )
+  },
+  returnObj: (res, obj)=>{
+    obj={res};
+    return obj.res
+  }
 }
 
+desktopData(){
+  var obj:object={'name': 'name'};
+  for(var k of this.TS['4'].key){
+  
+  this.getData.file(k,obj);
+  console.log(obj)
+ 
+  }
+  this.desktopArray.push(obj);
+}
 
 ngOnInit(){  
-  
   this.loading()
-  this.TableArray=this.getData.file('4')
-  console.log(this.TableArray);
+  this.getData.data();
+  
+  setTimeout(()=>{
+    console.log(this.TS)
+  },1000);
+  setTimeout(()=>{
+    this.desktopData();
+    console.log(this.desktopArray)
+  },2000);
 }
 
 }
