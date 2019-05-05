@@ -5,12 +5,11 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin-top: 15px;
+    margin-top: 0;
     text-align: left;
     cursor: pointer;
     width: 100%;
     background-color: rgb(173, 173, 173);
-    border-radius: 5px 5px 0 0;
 }
 .head p{
     font-weight: bold;
@@ -32,12 +31,13 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin-top: 10px;
+    
     margin-bottom: 10px;
     text-align: left;
     cursor: pointer;
     width: 90%;
-    margin-left:10px;
+    margin-top: 4px;
+    margin-left:30px;
 }
 .item img{
     width: 20px;
@@ -61,12 +61,13 @@
 .content{
     width: 100%;
     margin-left: 0;
-    height: 86%;
+    height: 88%;
     background-color: rgb(252, 252, 252);
 }
   
 .cdk-drag-placeholder {
     opacity: 0;
+    
 }
 
 .cdk-drag-animating {

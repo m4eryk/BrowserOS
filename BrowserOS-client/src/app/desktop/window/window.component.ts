@@ -14,7 +14,7 @@ export class WindowComponent implements OnInit, OnDestroy {
   @Input() destroy;
   @Input() desktopSetting;
   @Input() app;
-  @Input() TS;
+  @Input() getData;
 
   path:string;
   x:string;

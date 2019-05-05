@@ -10,7 +10,7 @@ export class ExplorerComponent implements OnInit {
 
   @Input() tas;
   @Input() app;
-  @Input() TS;
+  @Input() getData;
 
   value:object;
   backValue=[];
@@ -30,10 +30,9 @@ export class ExplorerComponent implements OnInit {
   }
 
   changeValue(param){
-    console.log(param)
     if(param.key && param.type=='folder'){
       this.backValue.push(this.value);
-      this.value=this.TS.getData.folder(param.key);
+      this.value=this.getData.folder(param.key);
     }
     else{
       if(param.type == 'txt'){
@@ -46,7 +45,6 @@ export class ExplorerComponent implements OnInit {
     
   }
   ngOnInit() {
-    console.log(this.tas);
     this.value=this.tas.dir;
   
     this.backValue.push(this.tas.dir);

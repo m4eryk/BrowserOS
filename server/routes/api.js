@@ -1,36 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
+const serialize = require('serializer.ts/Serializer');
 
 router.get('/', (req, res)=>{
     res.send('from api')
 })
 
-router.get('/data', (req,res)=>{
-    res.send(TS)
+router.get('/data/table', (req,res)=>{
+  var objTS = serialize.serialize(TS)
+  console.log(objTS)
+  res.json(objTS)
 })
 
-router.post('/data/folder', (req, res) =>{
-    let key=req.body
-    if(typeof(key)=='string'){
-        let obj=getData.folder(key);
-        res.send(obj)
-    }
-    else{
-        res.status('404');
-    }
+router.get('/data/array', (req,res)=>{
+  var objData = serialize.serialize(Data)
+  res.json(objData)
 })
 
-router.post('/data/file', (req,res) =>{
-    let key=req.body
-    if(typeof(key)=='string'){
-        let obj=getData.file(key);
-        res.send(obj)
-    }
-    else{
-        res.status('404');
-    }
-})
 
 var TS = {
     '0':{
@@ -105,75 +91,50 @@ var TS = {
     }
 }
 
-var getData = { 
-  folder:(key) =>{
-    var obj = [];
-    console.log(key);
-    for ( var i of key){
-      console.log(typeof(key));
-      var item = DataArray.get(key[i]);
-      console.log(key[i]);
-      obj.push(getData.checkData(item, key[i]))
-    }
-    
-    return obj;
-  },
-  file: (key) => {
-    var item = DataArray.get(key)
-    return getData.checkData(item, key);
-  },
-  checkData: (item, key)=>{
-    if(typeof(item) == 'function' && item != null){
-      return item(key);
-    }
-    else if(item != null){
-      return item;
-    }
-  }
-}
+
 
 var Data = {
-'0' : (key) =>{
-    return Data.getTableElm(key);
+'0' :{ 
+  'ref' : true
 },
-'1' : (key) =>{
-    return Data.getTableElm(key);
+'1' : { 
+  'ref' : true
 },
-'2' : (key) =>{
-    return Data.getTableElm(key);
+'2' : { 
+  'ref' : true
 },
-'3' : (key) =>{
-    return Data.getTableElm(key);
+'3' : { 
+  'ref' : true
 },
-'4' : (key) =>{
-    return Data.getTableElm(key);
+'4' : { 
+  'ref' : true
 },
-'5' : (key) =>{
-    return Data.getTableElm(key);
+'5' : { 
+  'ref' : true
 },
-'6' : (key) =>{
-    return Data.getTableElm(key);
+'6' : { 
+  'ref' : true
 },
-'7' : (key) =>{
-    return Data.getTableElm(key);
+'7' : { 
+  'ref' : true
 },
-'8' : (key) =>{
-    return Data.getTableElm(key);
+'8' : { 
+  'ref' : true
 },
-'9' : (key) =>{
-    return Data.getTableElm(key);
+'9' : { 
+  'ref' : true
 },
-'10' : (key) =>{
-    return Data.getTableElm(key);
+'10' : { 
+  'ref' : true
 },
-'11' : (key) =>{
-    return Data.getTableElm(key);
+'11' : { 
+  'ref' : true
 },
-'12' : (key) =>{
-    return Data.getTableElm(key);
+'12' : { 
+  'ref' : true
 },
-'13' : (key) =>{
-    return Data.getTableElm(key);
+'13' : { 
+  'ref' : true
 },
 '14': {
     'src' :"../assets/music/Мари Краимбрери – Ты полюби меня пьяную.mp3",

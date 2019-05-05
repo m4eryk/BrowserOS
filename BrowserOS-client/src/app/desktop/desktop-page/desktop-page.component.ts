@@ -9,18 +9,17 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class DesktopPageComponent implements OnInit {
 
-@Input() TS;
+@Input() getData;
 @Input() app;
 @Input() audio;
 @Input() tasks;
 @Input() exit;
-@Input() data;
+@Input() shortcut:object[]=[];
 
 contextmenu:boolean = false;
 contextmenuX:number = 0;
 contextmenuY:number = 0;
 arr = new Map();
-shortcut:object[]=[];
 windowX=200;
 windowY=50;
 
@@ -136,10 +135,6 @@ contextMenu:object=[
   }
 ]
 
-gettingData(obj){
-  return obj.get('Desktop')
-}
-
 addShorcat(obj){
   for( let i = 0 ; i < this.shortcut.length ; i++ ){
     if(Object.keys(this.shortcut[i]).length == 0){
@@ -182,17 +177,11 @@ constructor(){
 
 
 ngOnInit() {
-  console.log(this.TS)
-  
   setTimeout(() => this.addGrid(),2000)
-  
-  
 }
 
 addGrid(){
-  for(var i=0; i < this.shortcut.length; i++){
-    this.shortcut[i]=this.shortcut[i][0];
-}     
+       
   var widht = Math.round(window.outerWidth/100), height = Math.round(window.outerHeight/113);
   for( let i =0 ; i < height ; i++ ) {
     if( i > this.shortcut.length-2 ){
