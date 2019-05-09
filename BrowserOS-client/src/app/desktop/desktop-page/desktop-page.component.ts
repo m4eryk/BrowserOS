@@ -10,6 +10,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 export class DesktopPageComponent implements OnInit {
 
 @Input() getData;
+@Input() setData;
 @Input() app;
 @Input() audio;
 @Input() tasks;
@@ -93,6 +94,8 @@ contextMenu:object=[
                   type: 'folder',
                   name: 'Folder',
                 }
+              this.setData.setFolder(folder)
+              this.addShorcat(folder);
               }
             },
             {
@@ -100,12 +103,9 @@ contextMenu:object=[
               click: () =>{
                 var text= {
                   type: 'txt',
-                  name: 'MyText',
-                  id :2,
-                  text: true,
-                  value: '',
-                  change: false
+                  name: 'MyText'
                 }
+                this.setData.setTextFile(text)
                 this.addShorcat(text);
               }
             }

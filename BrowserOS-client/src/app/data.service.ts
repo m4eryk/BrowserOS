@@ -16,6 +16,7 @@ export class DataService {
   };
   private _dataTableUrl = 'http://localhost:3000/api/data/table';
   private _dataArrayUrl = 'http://localhost:3000/api/data/array';
+  private _dataSetUrl = 'http://localhost:3000/api/data/set'
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +26,11 @@ export class DataService {
     },
     dataArray: ()=>{
       return this.http.get(this._dataArrayUrl)
+    }
+  }
+  setData={
+    set: (obj)=>{
+      return this.http.post<any>(this._dataSetUrl, obj)
     }
   }
 }

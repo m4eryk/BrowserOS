@@ -18,6 +18,7 @@ export class ShortcutComponent implements OnInit {
   } 
 
   dblclick(obj){
+    console.log(obj)
     if(obj.type == 'txt'){
       this.app.textreader.bild(obj);
     }

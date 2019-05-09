@@ -37,6 +37,7 @@ state = {
 
 getData={
   getDataTable: async () =>{
+    console.log('table')
     this._Data.getData.dataTable().subscribe(
       res => this.Table=this.getData.returnObj(res, this.Table)
     )
@@ -65,13 +66,37 @@ getData={
     return this.getData.checkData(item, key);
   },
   checkData: (item, key)=>{
+    console.log(item + ' ' + key)
     if(item.ref){
       return this.TableMap.get(key);
-      
     }
     else{
       return item
     }
+  }
+}
+
+setData={
+  setFolder: (obj) =>{
+    this.TableMap.get('4').key.push(this.DataMap.size)
+    console.log(this.TableMap.get('4').key)
+    this.TableMap.set(this.DataMap.size, obj)
+    this.DataMap.set(this.DataMap.size, { 'ref' : true })
+    console.log(this.DataMap)
+    this._Data.setData.set(obj).subscribe(
+      res => console.log(res)
+    )
+  },
+  setTextFile: (obj) =>{
+    this.TableMap.get('4').key.push(this.DataMap.size)
+    console.log(this.TableMap.get('4').key)
+    obj.key=this.DataMap.size
+    this.TableMap.set(this.DataMap.size, obj)
+    this.DataMap.set(this.DataMap.size, { 'value' : '' })
+    console.log(this.DataMap)
+    this._Data.setData.set(obj).subscribe(
+      res => console.log(res)
+    )
   }
 }
 
@@ -300,21 +325,13 @@ async loading(){
   this.app.launcher.bild();
 }
 
-
-
-
-
-
-
-
 ngOnInit(){  
   this.loading()
-  
   setTimeout(()=>{
     this.DataMap = new Map(Object.entries(this.DataArray))
     this.TableMap = new Map(Object.entries(this.Table))
     this.shortcut=this.getData.folder(this.getData.file('4').key)
-  },2000);
+  },2000)
 }
 
 }
