@@ -7,7 +7,7 @@ At the moment, the project is at the initial stage of development and implements
 
 
 	
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1. 
 
 ## Development server
 
