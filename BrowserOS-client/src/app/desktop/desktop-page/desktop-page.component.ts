@@ -15,8 +15,9 @@ export class DesktopPageComponent implements OnInit {
 @Input() audio;
 @Input() tasks;
 @Input() exit;
-@Input() shortcut:object[]=[];
+@Input() shortcutArray:object[]=[];
 
+shortcut:object[]=[];
 contextmenu:boolean = false;
 contextmenuX:number = 0;
 contextmenuY:number = 0;
@@ -177,7 +178,12 @@ constructor(){
 
 
 ngOnInit() {
-  setTimeout(() => this.addGrid(),2000)
+  setTimeout(() => {
+    this.addGrid()
+    for(let item of this.shortcutArray){
+      this.addShorcat(item)
+    }
+  },2000)
 }
 
 addGrid(){

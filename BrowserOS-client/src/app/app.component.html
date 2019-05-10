@@ -7,7 +7,7 @@
             <div class="load-cube load-c3"><span>S</span></div>
         </div>
     </div>
-    <app-desktop-page *ngIf='state.Work' [app]='app' [getData]='getData' [setData]='setData' [shortcut]="shortcut" [audio]='audio' [tasks]='tasks' [exit]="exit" ></app-desktop-page>
+    <app-desktop-page *ngIf='state.Work' [app]='app' [getData]='getData' [setData]='setData' [shortcutArray]="shortcut" [audio]='audio' [tasks]='tasks' [exit]="exit" ></app-desktop-page>
     <div class="off" *ngIf='state.Off'><img src="../assets/img/off.svg" alt="off" (click)="loading()"></div>
 
 

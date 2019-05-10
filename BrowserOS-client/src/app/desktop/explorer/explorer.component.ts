@@ -15,10 +15,11 @@ export class ExplorerComponent implements OnInit {
   value:object;
   backValue=[];
   img:object={ 
-      folder : '../../assets/img/folder.png',
-      text : '../../assets/img/text.png',
-      player : '../../assets/img/player.png'
-  }
+    folder : '../../assets/img/folder.png',
+    text : '../../assets/img/text.png',
+    player : '../../assets/img/player.png',
+    picture : '../../assets/img/picture.png'
+  } 
 
   constructor(private _Data: DataService) { }
   
@@ -38,7 +39,7 @@ export class ExplorerComponent implements OnInit {
       if(param.type == 'txt'){
         this.app.textreader.bild(param);
       }
-      else if(param.type == 'mp3' || param.type == 'mp4'){
+      else if(param.type == 'mp3' || param.type == 'mp4' || param.type == 'jpg' ){
         this.app.player.bild(param);
       }
     }

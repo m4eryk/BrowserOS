@@ -26,7 +26,7 @@ var TS = {
   '4' : {
     'name' : 'Desktop',
     'type' : 'folder',
-    'key' : ['0','1','2','3','5','13']
+    'key' : ['0','1','2','3','5','13','19']
   },
   '5' : {
     'name' : 'PC',
@@ -72,72 +72,84 @@ var TS = {
     'name' : 'Краимбрери',
     'type' : 'mp3',
     'key' : '14'
+  },
+  '19' : {
+    'name' : 'Картинка',
+    'type' : 'jpg',
+    'key' : '20'
   }
 }
 
 var Data = {
-'0' :{ 
-'ref' : true
-},
-'1' : { 
-'ref' : true
-},
-'2' : { 
-'ref' : true
-},
-'3' : { 
-'ref' : true
-},
-'4' : { 
-'ref' : true
-},
-'5' : { 
-'ref' : true
-},
-'6' : { 
-'ref' : true
-},
-'7' : { 
-'ref' : true
-},
-'8' : { 
-'ref' : true
-},
-'9' : { 
-'ref' : true
-},
-'10' : { 
-'ref' : true
-},
-'11' : { 
-'ref' : true
-},
-'12' : { 
-'ref' : true
-},
-'13' : { 
-'ref' : true
-},
-'14': {
-  'src' :"../assets/music/Мари Краимбрери – Ты полюби меня пьяную.mp3",
-  'title' : "Ты полюби меня пьяную",
-  'artist' : "Мари Краимбрери",
-  'img' : '../assets/img/song/pyanay.jpg',
-  'id': 0
-},
-'15' : {
-  'src' : '../assets/video/videoplayback.mp4',
-  'type' : 'video/mp4'
-},
-'16' : {
-  'value' : ''
-},
-'17' : {
-  'value' : ''
-},
-'18' : {
-  'value' : ''
-}
+  '0' :{ 
+   'ref' : true
+  },
+  '1' : { 
+   'ref' : true
+  },
+  '2' : { 
+   'ref' : true
+  },
+  '3' : { 
+   'ref' : true
+  },
+  '4' : { 
+    'ref' : true
+  },
+  '5' : { 
+   'ref' : true
+  },
+  '6' : { 
+   'ref' : true
+  },
+  '7' : { 
+   'ref' : true
+  },
+  '8' : { 
+   'ref' : true
+  },
+  '9' : { 
+    'ref' : true
+  },
+  '10' : { 
+   'ref' : true
+  },
+  '11' : { 
+   'ref' : true
+  },
+  '12' : { 
+    'ref' : true
+  },
+  '13' : { 
+    'ref' : true
+  },
+  '14': {
+    'src' :"../assets/music/Мари Краимбрери – Ты полюби меня пьяную.mp3",
+    'title' : "Ты полюби меня пьяную",
+    'artist' : "Мари Краимбрери",
+    'img' : '../assets/img/song/pyanay.jpg',
+    'id': 0
+  },
+  '15' : {
+    'src' : '../assets/video/videoplayback.mp4',
+    'type' : 'video/mp4'
+  },
+  '16' : {
+    'value' : ''
+  },
+  '17' : {
+    'value' : ''
+  },
+  '18' : {
+    'value' : ''
+  },
+  '19' : {
+    'ref' : true
+  },
+  '20' : {
+    'src' : '../',
+    'type' : 'jpg'
+  }
 }
 
 var Table = new Map(Object.entries(TS));
