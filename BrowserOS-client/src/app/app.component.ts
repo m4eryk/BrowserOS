@@ -316,7 +316,7 @@ exit = () =>{
 
 
 loading(){
-  this.getData.getDataTable('DiskC/Desktop/', this.shortcut);
+  this.getData.getDataTable('PC/DiskC/Desktop/', this.shortcut);
   this.app.launcher.bild();
 }
 
