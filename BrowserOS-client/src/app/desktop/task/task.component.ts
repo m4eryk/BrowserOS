@@ -26,7 +26,8 @@ export class TaskComponent implements OnInit {
   img:object={ 
     folder : '../../assets/img/folder.png',
     text : '../../assets/img/text.png',
-    player : '../../assets/img/player.png'
+    player : '../../assets/img/player.png',
+    picture : './assets/img/picture.png'
   }
   
   constructor() { }

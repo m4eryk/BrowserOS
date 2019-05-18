@@ -12,10 +12,10 @@ export class ShortcutComponent implements OnInit {
   @Input() app;
   
   img:object={ 
-    folder : '../../assets/img/folder.png',
-    text : '../../assets/img/text.png',
-    player : '../../assets/img/player.png',
-    picture : '../../assets/img/picture.png'
+    folder : './assets/img/folder.png',
+    text : './assets/img/text.png',
+    player : './assets/img/player.png',
+    picture : './assets/img/picture.png'
   } 
 
   dblclick(obj){
@@ -23,7 +23,7 @@ export class ShortcutComponent implements OnInit {
     if(obj.type == 'txt'){
       this.app.textreader.bild(obj);
     }
-    else if(obj.type == 'mp3' || obj.type == 'mp4' || obj.type == 'jpg'){
+    else if(obj.type == 'mp3' || obj.type == 'mp4' || obj.type == 'jpeg'){
       this.app.player.bild(obj);
     }
     else{

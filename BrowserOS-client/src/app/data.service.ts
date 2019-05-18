@@ -14,23 +14,26 @@ export class DataService {
       'Authorization': 'my-auth-token'
     })
   };
-  private _dataTableUrl = 'http://localhost:3000/api/data/table';
-  private _dataArrayUrl = 'http://localhost:3000/api/data/array';
-  private _dataSetUrl = 'http://localhost:3000/api/data/set'
+  private _dataTableUrl = 'http://localhost:3000/api/data';
+  private _dataGiveUrl = 'http://localhost:3000/api/data/give'
+  private _dataSetTextValueUrl = 'http://localhost:3000/api/data/setTextValue'
 
   constructor(private http: HttpClient) { }
 
   getData={
-    dataTable: ()=>{
-      return this.http.get(this._dataTableUrl)
+    dataTable: (patch) => {
+      return this.http.post(this._dataTableUrl, patch)
     },
-    dataArray: ()=>{
-      return this.http.get(this._dataArrayUrl)
+    textValue : (patch) => {
+      return this.http.post(this._dataGiveUrl, patch)
     }
   }
   setData={
     set: (obj)=>{
-      return this.http.post<any>(this._dataSetUrl, obj)
+      //return this.http.post<any>(this._dataSetUrl, obj)
+    },
+    setTextValue: (obj) =>{
+     return this.http.post(this._dataSetTextValueUrl, obj)
     }
   }
 }

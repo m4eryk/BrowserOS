@@ -1,4 +1,4 @@
 <div class="text">
-  <textarea #text placeholder="Write text here" (click)="value.change=true">{{value.value}}</textarea>
+  <textarea #text placeholder="Write text here" (click)="value.change=true">{{value.buf}}</textarea>
 </div>
-<button (click)="setValue(text.value)">Save</button>
+<button (click)="setValue(text.value, tas.url)">Save</button>

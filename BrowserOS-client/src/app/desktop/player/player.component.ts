@@ -36,11 +36,9 @@ export class PlayerComponent implements OnInit {
   }
 
   selectSong(obj){
-    this.justsrc=obj.id;
-    this.img=this.music[this.justsrc].img;
-    this.artist=this.music[this.justsrc].artist;
-    this.title=this.music[this.justsrc].title;
-    this.tas.audio.src=obj.src;
+    this.img=this.music[this.justsrc].image;
+    this.artist=this.music[this.justsrc].name;
+    this.tas.audio.src=obj.source;
     this.play()
   }
 
@@ -70,10 +68,9 @@ export class PlayerComponent implements OnInit {
     if(this.justsrc > this.music.length-1){
       this.justsrc=0;
     }
-    this.tas.audio.src=this.music[this.justsrc].src;
-    this.img=this.music[this.justsrc].img;
-    this.artist=this.music[this.justsrc].artist;
-    this.title=this.music[this.justsrc].title;
+    this.tas.audio.src=this.music[this.justsrc].source;
+    this.img=this.music[this.justsrc].image;
+    this.artist=this.music[this.justsrc].name;
     this.play();
   }
 
@@ -82,10 +79,9 @@ export class PlayerComponent implements OnInit {
     if(this.justsrc <= 0){
       this.justsrc=this.music.length-1;
     }
-    this.tas.audio.src=this.music[this.justsrc].src;
-    this.img=this.music[this.justsrc].img;
-    this.artist=this.music[this.justsrc].artist;
-    this.title=this.music[this.justsrc].title;
+    this.tas.audio.src=this.music[this.justsrc].source;
+    this.img=this.music[this.justsrc].image;
+    this.artist=this.music[this.justsrc].name;
     this.play();
   }
 
@@ -100,22 +96,18 @@ export class PlayerComponent implements OnInit {
   }
 
   change(val){
-    console.log((val/10))
     this.tas.audio.volume=(val/10)
   }
 
   ngOnInit() {
-    var obj=this.source;
-    console.log(obj)
-    this.music.push(obj)
+    this.music.push(this.tas)
     console.log(this.music)
-    this.src=this.music[0].src;
+    this.src=this.music[0].source;
     this.tas.audio.src=this.src;
     this.tas.audio.load();
     this.tas.audio.volume= 0.5;
-    this.artist=this.music[0].artist;
-    this.title=this.music[0].title;
-    this.img=this.music[0].img;
+    this.artist=this.music[0].name;
+    this.img=this.music[0].image;
   }
 
 }

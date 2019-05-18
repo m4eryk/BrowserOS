@@ -9,7 +9,7 @@
   </div>
   <hr>
   <app-setting *ngIf='tas.setting' [desktopObj]='tas.desktopObj' ></app-setting>
-  <app-textreader *ngIf="tas.type=='txt'" [value]='tas.value' [tas]='tas' ></app-textreader>
+  <app-textreader *ngIf="tas.type=='txt' && tas.value " [value]='tas.value' [tas]='tas' ></app-textreader>
   <app-player *ngIf="tas.player" [tas]="tas" [source]='tas.source' ></app-player>
   <app-explorer *ngIf="tas.type=='folder'" [tas]='tas' [app]='app' [getData]='getData' ></app-explorer>
 </div>

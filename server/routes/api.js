@@ -1,185 +1,71 @@
 const express = require('express');
 const router = express.Router();
 const serialize = require('serializer.ts/Serializer');
+const mime = require('mime-types')
+const fs = require('fs');
+const FSpath= '../BrowserOS-client/src/assets/FS/'
 
-var TS = {
-  '0':{
-    'name':'MyFolder',
-    'type': 'folder',
-    'key' : ['8']
-  },
-  '1':{
-    'name':'YourFolder',
-    'type':'folder',
-    'key' :['2']
-  },
-  '2':{
-    'name' : 'BlackHole',
-    'type' : 'mp4',
-    'key' : '15'
-  },
-  '3' : {
-    'name' : 'textFile',
-    'type' : 'txt',
-    'key' : '18'
-  },
-  '4' : {
-    'name' : 'Desktop',
-    'type' : 'folder',
-    'key' : ['0','1','2','3','5','13','19']
-  },
-  '5' : {
-    'name' : 'PC',
-    'type' : 'folder',
-    'key' : ['6','7']
-  },
-  '6' : {
-    'name' : 'DickC',
-    'type' : 'folder',
-    'key' : ['4']
-  },
-  '7' : {
-    'name' : 'DickD',
-    'type' : 'folder',
-    'key' : ['2']
-  },
-  '8' : {
-    'name' : 'folder1',
-    'type' : 'folder',
-    'key' : ['10','9']
-  },
-  '9' : {
-    'name' : 'folder2',
-    'type' : 'folder',
-    'key' : ['11']
-  },
-  '10' : {
-    'name' : 'folder3',
-    'type' : 'folder',
-    'key' : ['12']
-  },
-  '11' : {
-    'name' : 'textFile',
-    'type' : 'txt',
-    'key' : '17'
-  },
-  '12' : {
-    'name' : 'textFile',
-    'type' : 'txt',
-    'key' : '16'
-  },
-  '13' : {
-    'name' : 'Краимбрери',
-    'type' : 'mp3',
-    'key' : '14'
-  },
-  '19' : {
-    'name' : 'Картинка',
-    'type' : 'jpg',
-    'key' : '20'
-  }
-}
-
-var Data = {
-  '0' :{ 
-   'ref' : true
-  },
-  '1' : { 
-   'ref' : true
-  },
-  '2' : { 
-   'ref' : true
-  },
-  '3' : { 
-   'ref' : true
-  },
-  '4' : { 
-    'ref' : true
-  },
-  '5' : { 
-   'ref' : true
-  },
-  '6' : { 
-   'ref' : true
-  },
-  '7' : { 
-   'ref' : true
-  },
-  '8' : { 
-   'ref' : true
-  },
-  '9' : { 
-    'ref' : true
-  },
-  '10' : { 
-   'ref' : true
-  },
-  '11' : { 
-   'ref' : true
-  },
-  '12' : { 
-    'ref' : true
-  },
-  '13' : { 
-    'ref' : true
-  },
-  '14': {
-    'src' :"../assets/music/Мари Краимбрери – Ты полюби меня пьяную.mp3",
-    'title' : "Ты полюби меня пьяную",
-    'artist' : "Мари Краимбрери",
-    'img' : '../assets/img/song/pyanay.jpg',
-    'id': 0
-  },
-  '15' : {
-    'src' : '../assets/video/videoplayback.mp4',
-    'type' : 'video/mp4'
-  },
-  '16' : {
-    'value' : ''
-  },
-  '17' : {
-    'value' : ''
-  },
-  '18' : {
-    'value' : ''
-  },
-  '19' : {
-    'ref' : true
-  },
-  '20' : {
-    'src' : '../',
-    'type' : 'jpg'
-  }
-}
-
-var Table = new Map(Object.entries(TS));
-var DataArray = new Map(Object.entries(Data));
 
 router.get('/', (req, res)=>{
-    res.send('from api')
+  res.send('from api')
 })
 
-router.get('/data/table', (req,res)=>{
-  var objTS = serialize.serialize(TS)
 
+router.post('/data', (req,res)=>{
+  console.log(req.body)
+  var objTS = serialize.serialize(getContent(req.body))
   res.json(objTS)
 })
 
-router.get('/data/array', (req,res)=>{
-  var objData = serialize.serialize(Data)
-  res.json(objData)
+
+router.post('/data/give', (req,res)=>{
+  console.log(req.body)
+  fs.readFile(FSpath+req.body, 'utf-8', (err, buf) => {
+    if (err) { console.log(err) }
+    let value={buf}
+    var objTS = serialize.serialize(value)
+    res.json(objTS)
+  })
 })
 
-router.post('/data/set', (req,res)=>{
-  Table.get('4').key.push(DataArray.size)
-  console.log(Table.get('4').key)
-  Table.set(DataArray.size, req.body)
-  DataArray.set(DataArray.size, { 'ref' : true })
-  console.log(DataArray)
-  res.status(200).send('ok');
+router.post('/data/setTextValue', (req, res) => {
+  console.log(req.body)
+  fs.writeFile(FSpath+req.body.path, req.body.buf, function(error){
+    if(error) throw error;
+  });
+  res.send({status : 'OK'})
 })
 
 
+function getContent(path){
+  var value= []
+  fs.readdirSync(FSpath+path).forEach(file => {
+    if(!mime.lookup(file)){
+      value.push(new File(path, 'folder', file))
+    }
+    else if(mime.lookup(file) == 'text/plain'){
+      value.push(new File(path, 'txt', file))
+    }
+    else if(mime.lookup(file) == 'video/mp4'){
+      value.push(new File(path, 'mp4', file))
+    }
+    else if(mime.lookup(file) == 'audio/mpeg'){
+      value.push(new File(path, 'mp3', file))
+    }
+    else if(mime.lookup(file) == 'image/jpeg'){
+      value.push(new File(path, 'jpeg', file))
+    }
+  })
+  return value
+}
+
+
+
+function File(path, type, name){
+  this.url=path+name;
+  this.type=type;
+  this.name=name;
+}
 
 
 module.exports = router;

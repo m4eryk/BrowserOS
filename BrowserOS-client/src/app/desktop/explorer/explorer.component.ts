@@ -12,7 +12,7 @@ export class ExplorerComponent implements OnInit {
   @Input() app;
   @Input() getData;
 
-  value:object;
+  value=[];
   backValue=[];
   img:object={ 
     folder : '../../assets/img/folder.png',
@@ -31,16 +31,22 @@ export class ExplorerComponent implements OnInit {
   }
 
   changeValue(param){
-    if(param.key && param.type=='folder'){
+    console.log(param)
+    if(param.type=='folder'){
       this.backValue.push(this.value);
-      this.value=this.getData.folder(param.key);
+      console.log(param.url)
+      this.value=[];
+      this.getData.getDataTable(param.url+'/',this.value);
+      console.log(this.value)
     }
     else{
       if(param.type == 'txt'){
         this.app.textreader.bild(param);
+      
       }
       else if(param.type == 'mp3' || param.type == 'mp4' || param.type == 'jpg' ){
         this.app.player.bild(param);
+        
       }
     }
     

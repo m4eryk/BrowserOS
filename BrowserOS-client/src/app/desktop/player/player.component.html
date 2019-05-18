@@ -1,6 +1,5 @@
 <div class="wrapper">
-    <video *ngIf="tas.type =='mp4'" controls>
-        <source src="{{source.src}}" type="{{source.type}}">
+    <video *ngIf="tas.type =='mp4'" controls src="{{source}}"  type="video/mp4">
         I'm sorry; your browser doesn't support HTML5 video.
     </video>
     <div class="wrappar-music"  *ngIf="tas.type =='mp3'">
@@ -53,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div class="wrappar-picture" *ngIf="tas.type =='jpg'" >
-        <img src="../../../assets/img/song/sochrani.jpg" alt="">
+    <div class="wrappar-picture" *ngIf="tas.type =='jpeg'" >
+        <img src="{{source}}" alt="img">
     </div>
 </div>

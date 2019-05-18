@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
-import { async } from 'q';
 import { deserialize } from 'serializer.ts/Serializer';
-import {serialize} from "serializer.ts/Serializer";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,8 +20,7 @@ Table={};
 DataArray={};
 DataMap;
 TableMap;
-shortcut;
-
+shortcut=[];
 
 constructor(private _Data: DataService){ }
 
@@ -36,46 +33,35 @@ state = {
 }
 
 getData={
-  getDataTable: async () =>{
-    this._Data.getData.dataTable().subscribe(
-      res => this.Table=this.getData.returnObj(res, this.Table)
+  getDataTable: (path, value) =>{
+    this._Data.getData.dataTable(path).subscribe(
+      res => { 
+        var obj;
+        obj=this.getData.returnObj(res)
+        for(let item of obj){
+          value.push(item)
+        }
+      }
     )
   },
-  getDataArray: async () =>{
-    this._Data.getData.dataArray().subscribe(
-      res => this.DataArray=this.getData.returnObj(res, this.DataArray)
-    )
-  },
-  returnObj: (res, obj)=>{
+  returnObj: (res)=>{
     var objSerialize=deserialize<Object>(Object,res);
-    
-    obj={objSerialize};
+    var obj={objSerialize};
     return obj.objSerialize
   },
-  folder:(key:string[]) =>{
-    var obj:object[]=[];
-    for ( var i in key){
-      var item=this.DataMap.get(key[i]);
-      obj.push(this.getData.checkData(item, key[i]))
-    }
-    return obj;
-  },
-  file: (key:string) => {
-    var item = this.DataMap.get(key)
-    return this.getData.checkData(item, key);
-  },
-  checkData: (item, key)=>{
-    if(item.ref){
-      return this.TableMap.get(key);
-    }
-    else{
-      return item
-    }
+  getTextValue: (path) =>{
+    return new Promise( (resolve, reject) =>{
+      this._Data.getData.textValue(path).subscribe(
+        res => {
+          resolve(res)
+        }
+      );
+    })
   }
 }
 
 setData={
-  setFolder: (obj) =>{
+  /*setFolder: (obj) =>{
     this.TableMap.get('4').key.push(this.DataMap.size)
     this.TableMap.set(this.DataMap.size, obj)
     this.DataMap.set(this.DataMap.size, { 'ref' : true })
@@ -91,7 +77,13 @@ setData={
     this._Data.setData.set(obj).subscribe(
       res => console.log(res)
     )
+  }*/
+  setTextValue: (obj) =>{
+    this._Data.setData.setTextValue(obj).subscribe(
+      res => console.log(res)
+    )
   }
+
 }
 
 
@@ -150,6 +142,7 @@ app = {
   explorer :{  
     bild : (obj) => {
       var task = {
+          url: obj.url,
           image:'../../assets/img/folder.png',
           name: obj.name,
           minimize: true,
@@ -157,8 +150,9 @@ app = {
           type: obj.type,
           destroy: this.app.explorer.destroy,
           colappase: this.app.explorer.colappase,
-          dir : this.getData.folder(obj.key)
+          dir : []
       }
+      this.getData.getDataTable(obj.url+'/',task.dir)
       task.id=this.taskCount;
       this.tasks.push(task);
     this.taskCount++;
@@ -207,14 +201,14 @@ app = {
   player:{ 
     bild: (obj) => {
     var task ={
-      image: '../../assets/img/player.png',
+      image: '/assets/img/player.png',
       name: obj.name,
       minimize: true,
       id: 0,
       type: obj.type,
       destroy: this.app.player.destroy,
       colappase: this.app.player.colappase,
-      source : this.getData.file(obj.key),
+      source : '../../../assets/FS/' + obj.url,
       player: true,
       audio: this.audio
     }
@@ -281,9 +275,17 @@ app = {
         type: obj.type,
         destroy: this.app.textreader.destroy,
         colappase: this.app.textreader.colappase,
-        value: this.getData.file(obj.key),
-        close: false
+        value: null,
+        close: false,
+        url : obj.url
       }
+      this.getData.getTextValue(obj.url)
+                  .then(
+                    response => { 
+                      task.value =  response
+                    },
+                    error => console.log(`Rejected: ${error}`)
+                  )
       task.id=this.taskCount;
       this.tasks.push(task);
       this.taskCount++;
@@ -312,21 +314,14 @@ exit = () =>{
   this.app.launcher.destroy();
 }
 
-async loading(){
-  this.state.Loading=true;
-  await this.getData.getDataTable();
-  await this.getData.getDataArray();
+
+loading(){
+  this.getData.getDataTable('DiskC/Desktop/', this.shortcut);
   this.app.launcher.bild();
 }
 
-ngOnInit(){  
+ngOnInit(){
   this.loading()
-  setTimeout(()=>{
-    this.DataMap = new Map(Object.entries(this.DataArray))
-    this.TableMap = new Map(Object.entries(this.Table))
-    this.shortcut=this.getData.folder(this.getData.file('4').key)
-    console.log(this.shortcut);
-  },2000)
 }
 
 }
