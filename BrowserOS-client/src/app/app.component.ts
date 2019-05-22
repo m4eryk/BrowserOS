@@ -32,7 +32,7 @@ state = {
   Off : false
 }
 
-getData={
+getData = {
   getDataTable: (path, value) =>{
     this._Data.getData.dataTable(path).subscribe(
       res => { 
@@ -60,30 +60,26 @@ getData={
   }
 }
 
-setData={
-  /*setFolder: (obj) =>{
-    this.TableMap.get('4').key.push(this.DataMap.size)
-    this.TableMap.set(this.DataMap.size, obj)
-    this.DataMap.set(this.DataMap.size, { 'ref' : true })
-    this._Data.setData.set(obj).subscribe(
-      res => console.log(res)
-    )
-  },
-  setTextFile: (obj) =>{
-    this.TableMap.get('4').key.push(this.DataMap.size)
-    obj.key=this.DataMap.size
-    this.TableMap.set(this.DataMap.size, obj)
-    this.DataMap.set(this.DataMap.size, { 'value' : '' })
-    this._Data.setData.set(obj).subscribe(
-      res => console.log(res)
-    )
-  }*/
+setData = {
   setTextValue: (obj) =>{
     this._Data.setData.setTextValue(obj).subscribe(
       res => console.log(res)
     )
   }
 
+}
+
+creatData = {
+  folder : (name) =>{
+    this._Data.creatFile.creatFolder(name).subscribe(
+      res => console.log(res)
+    )
+  },
+  textFile : (name) =>{
+    this._Data.creatFile.creatTextFile(name).subscribe(
+      res => console.log(res)
+    )
+  }
 }
 
 

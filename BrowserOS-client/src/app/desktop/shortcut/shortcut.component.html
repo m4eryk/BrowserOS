@@ -4,5 +4,6 @@
   <img *ngIf="cut.type=='mp4'" src="{{img.player}}" alt="label">
   <img *ngIf="cut.type=='mp3'" src="{{img.player}}" alt="label">
   <img *ngIf="cut.type=='jpeg'" src="{{img.picture}}" alt="label">
-  <p>{{cut.name}}</p>
+  <input *ngIf="cut.creat"   type='text' #text (keyup.enter)="onclick(text.value,cut.type)">
+  <p *ngIf="!cut.creat">{{cut.name}}</p>
 </div>

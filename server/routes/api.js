@@ -6,6 +6,8 @@ const fs = require('fs');
 const FSpath= '../BrowserOS-client/src/assets/FS/'
 
 
+
+
 router.get('/', (req, res)=>{
   res.send('from api')
 })
@@ -33,7 +35,23 @@ router.post('/data/setTextValue', (req, res) => {
   fs.writeFile(FSpath+req.body.path, req.body.buf, function(error){
     if(error) throw error;
   });
-  res.send({status : 'OK'})
+})
+
+
+router.post('/data/creatFolder', (req,res) => {
+  console.log(req.body)
+  fs.mkdir(FSpath+'/PC/DiskC/Desktop/'+req.body, { recursive: true }, (err) => {
+    if (err) throw err;
+    console.log('creat new folder')
+  });
+})
+
+router.post('/data/creatTextFile', (req,res) => {
+  console.log(req.body)
+  fs.writeFile(FSpath+'/PC/DiskC/Desktop/'+req.body+'.txt', '', function(error){
+    if(error) throw error;
+    console.log('creat new text file')
+  });
 })
 
 

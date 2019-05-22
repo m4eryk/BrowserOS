@@ -17,6 +17,8 @@ export class DataService {
   private _dataTableUrl = 'http://localhost:3000/api/data';
   private _dataGiveUrl = 'http://localhost:3000/api/data/give'
   private _dataSetTextValueUrl = 'http://localhost:3000/api/data/setTextValue'
+  private _dataCreatNewFolder = 'http://localhost:3000/api/data/creatFolder'
+  private _dataCreatNewTextFile = 'http://localhost:3000/api/data/creatTextFile'
 
   constructor(private http: HttpClient) { }
 
@@ -34,6 +36,14 @@ export class DataService {
     },
     setTextValue: (obj) =>{
      return this.http.post(this._dataSetTextValueUrl, obj)
+    }
+  }
+  creatFile = {
+    creatFolder: (name) =>{
+      return this.http.post(this._dataCreatNewFolder, name)
+    },
+    creatTextFile: (name) =>{
+      return this.http.post(this._dataCreatNewTextFile, name)
     }
   }
 }

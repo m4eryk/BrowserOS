@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { AppComponent } from 'src/app/app.component';
 
 
 @Component({
@@ -9,8 +10,6 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class DesktopPageComponent implements OnInit {
 
-@Input() getData;
-@Input() setData;
 @Input() app;
 @Input() audio;
 @Input() tasks;
@@ -21,7 +20,6 @@ shortcut:object[]=[];
 contextmenu:boolean = false;
 contextmenuX:number = 0;
 contextmenuY:number = 0;
-arr = new Map();
 windowX=200;
 windowY=50;
 
@@ -94,9 +92,9 @@ contextMenu:object=[
                 var folder = {
                   type: 'folder',
                   name: 'Folder',
+                  creat: true
                 }
-              this.setData.setFolder(folder)
-              this.addShorcat(folder);
+                this.addShorcat(folder);
               }
             },
             {
@@ -104,9 +102,9 @@ contextMenu:object=[
               click: () =>{
                 var text= {
                   type: 'txt',
-                  name: 'MyText'
+                  name: 'MyText',
+                  creat: true
                 }
-                this.setData.setTextFile(text)
                 this.addShorcat(text);
               }
             }
@@ -149,7 +147,7 @@ addShorcat(obj){
   else
   {
     var close=false;
-    for( let i = 0; i < Math.round(window.outerWidth/100) ; i++)
+    for( let i = 0; i < Math.round(window.outerWidth/102) ; i++)
     {
       for ( let j = 0; j < Math.round(window.outerHeight/113); j++) 
       { 
@@ -221,7 +219,10 @@ onRightClick(event){
 }
 
 disableContextMenu(event){
-  this.contextmenu=false;
+  setTimeout(() => {
+    this.contextmenu=false;
+  },100)
+  
 }
 
 }
