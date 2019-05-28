@@ -12,6 +12,9 @@ export class MessageboxComponent implements OnInit {
   @Input() destroy;
   @Input() obj
   
+  calBuf = {
+    destroy  : () => this.tas.destroy(this.tas)
+  }
   constructor() { }
 
   ngOnInit() {
@@ -29,10 +32,10 @@ export class MessageboxComponent implements OnInit {
   ok(param){
     param.value.change=false;
     param.destroy(param);
-    this.tas.destroy(this.tas);
+    this.calBuf.destroy()
   }
 
   dst(){
-    this.tas.destroy(this.tas);
+    this.calBuf.destroy()
   }
 }

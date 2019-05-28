@@ -23,18 +23,11 @@ export class WindowComponent implements OnInit, OnDestroy {
   width:string='0';
   top:string;
   left:string;
-  size: number[]=[];
 
   constructor() {
     
-    for(let i = 30; i < 200; i+=40){
-      this.size.push(i);
-    }
    }
 
-  drop(event: CdkDragDrop<number[]>) {
-    moveItemInArray(this.size, event.previousIndex, event.currentIndex);
-  }
 
   ngOnInit() {
     this.x=this.desktopSetting.getWindowX()+'px';

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-player',
@@ -25,7 +26,7 @@ export class PlayerComponent implements OnInit {
   music=[]
 
 
-  constructor() { }
+  constructor(private _Audio: AppComponent) { }
 
   viewFalse(){
     this.view=false;
@@ -38,20 +39,20 @@ export class PlayerComponent implements OnInit {
   selectSong(obj){
     this.img=this.music[this.justsrc].image;
     this.artist=this.music[this.justsrc].name;
-    this.tas.audio.src=obj.source;
+    this._Audio.audio.src=obj.source;
     this.play()
   }
 
   play(){
-    this.tas.audio.play();
+    this._Audio.audio.play();
     if(!this.activ){
       this.activ=true;
       this.timer= setInterval(()=>{
-        this.progressElmValue=this.tas.audio.currentTime.toFixed(0);
-        this.start=(this.tas.audio.currentTime / 60).toFixed(2);
-        this.progressElmMax=this.tas.audio.duration.toFixed(0);
-        this.end=(this.tas.audio.duration / 60).toFixed(2);
-          if(this.tas.audio.currentTime>=this.tas.audio.duration){
+        this.progressElmValue=this._Audio.audio.currentTime.toFixed(0);
+        this.start=(this._Audio.audio.currentTime / 60).toFixed(2);
+        this.progressElmMax=this._Audio.audio.duration.toFixed(0);
+        this.end=(this._Audio.audio.duration / 60).toFixed(2);
+          if(this._Audio.audio.currentTime>=this._Audio.audio.duration){
             this.next()
           }
       })
@@ -60,7 +61,7 @@ export class PlayerComponent implements OnInit {
   }
 
   pause(){
-    this.tas.audio.pause();
+    this._Audio.audio.pause();
   }
 
   next(){
@@ -68,7 +69,7 @@ export class PlayerComponent implements OnInit {
     if(this.justsrc > this.music.length-1){
       this.justsrc=0;
     }
-    this.tas.audio.src=this.music[this.justsrc].source;
+    this._Audio.audio.src=this.music[this.justsrc].source;
     this.img=this.music[this.justsrc].image;
     this.artist=this.music[this.justsrc].name;
     this.play();
@@ -79,7 +80,7 @@ export class PlayerComponent implements OnInit {
     if(this.justsrc <= 0){
       this.justsrc=this.music.length-1;
     }
-    this.tas.audio.src=this.music[this.justsrc].source;
+    this._Audio.audio.src=this.music[this.justsrc].source;
     this.img=this.music[this.justsrc].image;
     this.artist=this.music[this.justsrc].name;
     this.play();
@@ -89,23 +90,22 @@ export class PlayerComponent implements OnInit {
     if(!this.activ){
       this.activ=true;
       this.timer= setInterval(()=>{
-          this.progressElmValue=this.tas.audio.currentTime.toFixed(0);
-          this.progressElmMax=this.tas.audio.duration.toFixed(0);
+          this.progressElmValue=this._Audio.audio.currentTime.toFixed(0);
+          this.progressElmMax=this._Audio.audio.duration.toFixed(0);
       })
     }
   }
 
   change(val){
-    this.tas.audio.volume=(val/10)
+    this._Audio.audio.volume=(val/10)
   }
 
   ngOnInit() {
     this.music.push(this.tas)
-    console.log(this.music)
     this.src=this.music[0].source;
-    this.tas.audio.src=this.src;
-    this.tas.audio.load();
-    this.tas.audio.volume= 0.5;
+    this._Audio.audio.src=this.src;
+    this._Audio.audio.load();
+    this._Audio.audio.volume= 0.5;
     this.artist=this.music[0].name;
     this.img=this.music[0].image;
   }

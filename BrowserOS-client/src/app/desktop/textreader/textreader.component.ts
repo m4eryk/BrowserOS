@@ -13,7 +13,6 @@ export class TextreaderComponent implements OnInit {
   constructor(private _setData:AppComponent) { }
 
   ngOnInit() {
-    console.log(this.tas)
     setInterval(()=>{
       if( this.tas.close == true ){
         this.tas.destroy(this.tas)
@@ -22,12 +21,10 @@ export class TextreaderComponent implements OnInit {
   }
 
   setValue(value, path){
-    console.log(path)
     var obj = {
       buf : value,
       path : path
     }
-    console.log(obj)
     this._setData.setData.setTextValue(obj)
     this.value.change=false;
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, HostListener } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { AppComponent } from 'src/app/app.component';
 
@@ -22,6 +22,10 @@ contextmenuX:number = 0;
 contextmenuY:number = 0;
 windowX=200;
 windowY=50;
+config;
+hight:number[]=[];
+widht:number[]=[];
+grid:object[]=[];
 
 desktopSetting ={
   backgroundImg: 'https://bipbap.ru/wp-content/uploads/2017/06/tmb_145037_6611.jpg',
@@ -120,19 +124,45 @@ contextMenu:object=[
     name: 'Exit full screen mode',
     onclick:'',
     explorer: false,
-    setting: true,
-    click: (obj) =>{
-    }
+    setting: true
   },
   {
     name: 'Change user',
     onclick:'',
     explorer: false,
-    setting: true,
-    click: (obj) =>{
-    }
+    setting: true
   }
 ]
+
+creatDesktopShorcat(obj){
+    for(let i=0; i < this.config.length ; i++ ){
+      if(this.shortcut.length >= Math.round(window.outerHeight/80)){
+        var arrID = this.config[i]['id']
+        if(this.config[i]['name'] == obj.name && arrID[0] == 0){
+          this.shortcut[i]=obj
+        }
+      }
+    }
+    var close=false;
+    for( let i = 0; i < Math.round(window.outerWidth/100) ; i++)
+    {
+      for ( let j = 0; j < Math.round(window.outerHeight/80); j++) 
+      { 
+        for(let k=0; k < this.config.length ; k++ ){
+          var arrID = this.config[k]['id']
+          if(this.config[k]['name'] == obj.name && arrID[0]==i+1 && arrID[1]==j){
+            this.grid[i][j]=obj;
+            close=true;
+            break;   
+          }
+        }
+      }
+      if(close){
+        break;
+      }
+    }
+}
+
 
 addShorcat(obj){
   for( let i = 0 ; i < this.shortcut.length ; i++ ){
@@ -143,13 +173,14 @@ addShorcat(obj){
   if( Math.round(window.outerHeight/113) > this.shortcut.length)
   {
     this.shortcut.push(obj);
+    
   }
   else
   {
     var close=false;
-    for( let i = 0; i < Math.round(window.outerWidth/102) ; i++)
+    for( let i = 0; i < Math.round(window.outerWidth/100) ; i++)
     {
-      for ( let j = 0; j < Math.round(window.outerHeight/113); j++) 
+      for ( let j = 0; j < Math.round(window.outerHeight/80); j++) 
       { 
         if(Object.keys(this.grid[i][j]).length == 0)
         {
@@ -165,28 +196,49 @@ addShorcat(obj){
   }
 }
 
-hight:number[]=[];
-widht:number[]=[];
-grid:object[]=[];
 
 
-constructor(){
+
+constructor(private _config: AppComponent){
   
 }
 
 
-ngOnInit() {
-  setTimeout(() => {
-    this.addGrid()
-    for(let item of this.shortcutArray){
-      this.addShorcat(item)
+async ngOnInit() {
+  this.config = await this._config.getData.getConfig()
+  this.addGrid()
+  for(let item of this.shortcutArray){
+    //this.addShorcat(item)
+    this.creatDesktopShorcat(item)
+  }
+}
+@HostListener('window:beforeunload')
+async ngOnDestroy(){
+  var config=[]
+  for( let j = 0; j < this.shortcut.length; j++ ){
+    var shortcut = {
+      id : [ 0, j ],
+      name : this.shortcut[j]['name']
     }
-  },2000)
+    config.push(shortcut)
+  }
+  for( let i = 0 ;  i <   this.grid.length ; i++){
+    for( let index in this.grid[i]){
+      if(!(Object.keys(this.grid[i][index]).length == 0)){
+        var buf = this.grid[i][index];
+        shortcut = {
+          id : [ i+1, Number.parseInt(index) ],
+          name : buf.name
+        }
+        config.push(shortcut)
+      }
+    }
+  }
+  await this._config.setData.setConfig(config)
 }
 
-addGrid(){
-       
-  var widht = Math.round(window.outerWidth/100), height = Math.round(window.outerHeight/113);
+addGrid(){   
+  var widht = Math.round(window.outerWidth/100), height = Math.round(window.outerHeight/80);
   for( let i =0 ; i < height ; i++ ) {
     if( i > this.shortcut.length-2 ){
       this.shortcut.push({});
@@ -218,11 +270,10 @@ onRightClick(event){
   this.contextmenu=true;
 }
 
-disableContextMenu(event){
+disableContextMenu(){
   setTimeout(() => {
     this.contextmenu=false;
   },100)
-  
 }
 
 }

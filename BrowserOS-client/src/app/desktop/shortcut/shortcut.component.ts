@@ -29,7 +29,6 @@ export class ShortcutComponent implements OnInit {
   constructor(private _creatFile: AppComponent, private _contextMenuActiv: DesktopPageComponent) {}
 
   dblclick(obj){
-    console.log(obj)
     if(obj.type == 'txt'){
       this.app.textreader.bild(obj);
     }
@@ -43,10 +42,8 @@ export class ShortcutComponent implements OnInit {
 
   onclick(name,type){
     if(!this._contextMenuActiv.contextmenu){  
-      console.log(name + type)
       if(type == 'txt'){
         if(name === ''){
-          console.log('wdwadawdwa')
           this._creatFile.creatData.textFile('newText')
         }
         else this._creatFile.creatData.textFile(name)
@@ -62,7 +59,6 @@ export class ShortcutComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.cut.type)
   }
   
 

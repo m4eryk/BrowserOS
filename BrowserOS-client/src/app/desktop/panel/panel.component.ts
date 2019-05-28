@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core'
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import {formatDate } from '@angular/common';
 
 @Component({
@@ -15,20 +16,11 @@ export class PanelComponent implements OnInit {
   @Input() setting;
   @Input() app;
 
-  day='';
-  dayI='';
-  time='';
+  day:string;
+  dayI:string;
+  time:string;
 
-  ngOnInit() {
-    console.log(this.shortcut)
-    setInterval(()=>{
-      let date= new Date()
-      this.time=formatDate(date, 'HH:mm', 'en-US');
-      this.day= formatDate(date, 'EEEE', 'en-Us');
-      this.dayI= formatDate(date, 'd', 'en-Us');
-    });
-
-  }
+  
 
   dblclick(obj){
     if(obj.type == 'txt'){
@@ -42,4 +34,16 @@ export class PanelComponent implements OnInit {
     }
   }
 
+  timer(){
+    setInterval(()=>{
+      let date= new Date()
+      this.time=formatDate(date, 'HH:mm', 'en-US');
+      this.day= formatDate(date, 'EEEE', 'en-Us');
+      this.dayI= formatDate(date, 'd', 'en-Us');
+    },1000);
+  }
+  
+  ngOnInit() {
+    this.timer();
+  }
 }

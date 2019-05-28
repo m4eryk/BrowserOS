@@ -17,7 +17,6 @@ export class ContextmenuComponent implements OnInit {
   }
 
   leave() {
-    console.log(this.value[0].click);
     this.contextMenu[1].viewChild=false;
   }
 

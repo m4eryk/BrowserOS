@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const serialize = require('serializer.ts/Serializer');
 const mime = require('mime-types')
 const fs = require('fs');
 const FSpath= '../BrowserOS-client/src/assets/FS/'
@@ -15,8 +14,7 @@ router.get('/', (req, res)=>{
 
 router.post('/data', (req,res)=>{
   console.log(req.body)
-  var objTS = serialize.serialize(getContent(req.body))
-  res.json(objTS)
+  res.json(getContent(req.body))
 })
 
 
@@ -25,8 +23,7 @@ router.post('/data/give', (req,res)=>{
   fs.readFile(FSpath+req.body, 'utf-8', (err, buf) => {
     if (err) { console.log(err) }
     let value={buf}
-    var objTS = serialize.serialize(value)
-    res.json(objTS)
+    res.json(value)
   })
 })
 
@@ -48,10 +45,26 @@ router.post('/data/creatFolder', (req,res) => {
 
 router.post('/data/creatTextFile', (req,res) => {
   console.log(req.body)
-  fs.writeFile(FSpath+'/PC/DiskC/Desktop/'+req.body+'.txt', '', function(error){
-    if(error) throw error;
-    console.log('creat new text file')
+  fs.appendFile(FSpath+'/PC/DiskC/Desktop/'+req.body+'.txt', 'data to append', function (err) {
+    if (err) throw err;
+    console.log('creat new text file!');
   });
+})
+
+router.get('/data/getConfig', (req, res) => {
+  fs.readFile('config.json', 'utf-8', (err, buf) => {
+    if (err) { console.log(err) }
+    console.log(buf)
+    res.json(JSON.parse(buf))
+  })
+})
+
+router.post('/data/setConfig', (req, res) => {
+  let config = JSON.stringify(req.body)
+  fs.writeFile('config.json', config, function(error){
+    if(error) throw error;
+  });
+  res.send({StarusOK : '200'})  
 })
 
 

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
-import { deserialize } from 'serializer.ts/Serializer';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,12 +14,7 @@ playerActiv:boolean=false;
 
 taskCount:number=0;
 tasks:object[]=[];
-openWind:number[]=[];
-Table={};
-DataArray={};
-DataMap;
-TableMap;
-shortcut=[];
+shortcut;
 
 constructor(private _Data: DataService){ }
 
@@ -33,21 +27,14 @@ state = {
 }
 
 getData = {
-  getDataTable: (path, value) =>{
-    this._Data.getData.dataTable(path).subscribe(
-      res => { 
-        var obj;
-        obj=this.getData.returnObj(res)
-        for(let item of obj){
-          value.push(item)
+  getDataTable: (path) =>{
+    return new Promise( (resolve, reject) =>{
+      this._Data.getData.dataTable(path).subscribe(
+        res => {  
+          resolve(res)
         }
-      }
-    )
-  },
-  returnObj: (res)=>{
-    var objSerialize=deserialize<Object>(Object,res);
-    var obj={objSerialize};
-    return obj.objSerialize
+      )
+    })
   },
   getTextValue: (path) =>{
     return new Promise( (resolve, reject) =>{
@@ -57,28 +44,38 @@ getData = {
         }
       );
     })
+  },
+  getConfig : () => {
+    return new Promise( (resolve, reject) => {
+      this._Data.getData.config().subscribe(
+        res => {
+          resolve(res)
+        }
+      )
+    })
   }
 }
 
 setData = {
   setTextValue: (obj) =>{
-    this._Data.setData.setTextValue(obj).subscribe(
-      res => console.log(res)
-    )
+    this._Data.setData.setTextValue(obj).subscribe()
+  },
+  setConfig : (config) => {
+   return new Promise( (resolve,reject) => {
+    this._Data.setData.setConfig(config).subscribe(
+      res => {
+        resolve(res)
+      })
+    }) 
   }
-
 }
 
 creatData = {
   folder : (name) =>{
-    this._Data.creatFile.creatFolder(name).subscribe(
-      res => console.log(res)
-    )
+    this._Data.creatFile.creatFolder(name).subscribe()
   },
   textFile : (name) =>{
-    this._Data.creatFile.creatTextFile(name).subscribe(
-      res => console.log(res)
-    )
+    this._Data.creatFile.creatTextFile(name).subscribe()
   }
 }
 
@@ -88,23 +85,23 @@ message:object=[
     name: 'Save',
     quest: "Quit without saving",
     destroy : (obj ) =>{
-      this.app.message.destroy(obj)
+      this.app.messages.destroy(obj)
     },
     bild : (obj, param) =>{
-      this.app.message.bild(obj, param)
+      this.app.messages.bild(obj, param)
     },
     click: (obj) =>{
-      this.app.message.click(obj)
+      this.app.messages.click(obj)
     }
   },
   {
     name: 'Alert',
     quest: "Player is active",
     destroy : (obj ) =>{
-      this.app.message.destroy(obj)
+      this.app.messages.destroy(obj)
     },
     bild : (obj, param) =>{
-      this.app.message.bild(obj, param)
+      this.app.messages.bild(obj, param)
     }
   }
 ]
@@ -136,7 +133,7 @@ app = {
     }
   },
   explorer :{  
-    bild : (obj) => {
+    bild : async (obj) => {
       var task = {
           url: obj.url,
           image:'../../assets/img/folder.png',
@@ -146,9 +143,9 @@ app = {
           type: obj.type,
           destroy: this.app.explorer.destroy,
           colappase: this.app.explorer.colappase,
-          dir : []
+          dir : null
       }
-      this.getData.getDataTable(obj.url+'/',task.dir)
+      task.dir = await this.getData.getDataTable(obj.url+'/')
       task.id=this.taskCount;
       this.tasks.push(task);
     this.taskCount++;
@@ -225,7 +222,7 @@ app = {
       param.minimize=!param.minimize;
     }   
   },
-  message:{
+  messages:{
     bild: (obj, param) => {
       var task ={
         name: obj.name,
@@ -262,7 +259,7 @@ app = {
     }
   },
   textreader :{
-    bild : (obj) => {
+    bild : async (obj) => {
       var task ={
         image: '../../assets/img/text.png',
         name: obj.name,
@@ -275,13 +272,7 @@ app = {
         close: false,
         url : obj.url
       }
-      this.getData.getTextValue(obj.url)
-                  .then(
-                    response => { 
-                      task.value =  response
-                    },
-                    error => console.log(`Rejected: ${error}`)
-                  )
+      task.value = await this.getData.getTextValue(obj.url)
       task.id=this.taskCount;
       this.tasks.push(task);
       this.taskCount++;
@@ -295,7 +286,7 @@ app = {
           }
         }
       }else{
-        this.app.message.bild(this.message[0], obj);
+        this.app.messages.bild(this.message[0], obj);
       }
     },
     colappase : (param) =>{
@@ -311,8 +302,8 @@ exit = () =>{
 }
 
 
-loading(){
-  this.getData.getDataTable('PC/DiskC/Desktop/', this.shortcut);
+async loading(){
+  this.shortcut = await this.getData.getDataTable('PC/DiskC/Desktop/');
   this.app.launcher.bild();
 }
 

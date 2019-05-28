@@ -15,10 +15,12 @@ export class DataService {
     })
   };
   private _dataTableUrl = 'http://localhost:3000/api/data';
-  private _dataGiveUrl = 'http://localhost:3000/api/data/give'
-  private _dataSetTextValueUrl = 'http://localhost:3000/api/data/setTextValue'
-  private _dataCreatNewFolder = 'http://localhost:3000/api/data/creatFolder'
-  private _dataCreatNewTextFile = 'http://localhost:3000/api/data/creatTextFile'
+  private _dataGiveUrl = 'http://localhost:3000/api/data/give';
+  private _dataGetConfigUrl = 'http://localhost:3000/api/data/getConfig'; 
+  private _dataSetConfigUrl = 'http://localhost:3000/api/data/setConfig';
+  private _dataSetTextValueUrl = 'http://localhost:3000/api/data/setTextValue';
+  private _dataCreatNewFolder = 'http://localhost:3000/api/data/creatFolder';
+  private _dataCreatNewTextFile = 'http://localhost:3000/api/data/creatTextFile';
 
   constructor(private http: HttpClient) { }
 
@@ -28,6 +30,9 @@ export class DataService {
     },
     textValue : (patch) => {
       return this.http.post(this._dataGiveUrl, patch)
+    },
+    config : () => {
+      return this.http.get(this._dataGetConfigUrl)
     }
   }
   setData={
@@ -36,6 +41,9 @@ export class DataService {
     },
     setTextValue: (obj) =>{
      return this.http.post(this._dataSetTextValueUrl, obj)
+    },
+    setConfig: (config) => {
+      return this.http.post(this._dataSetConfigUrl, config)
     }
   }
   creatFile = {

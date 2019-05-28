@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from 'src/app/data.service';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-explorer',
@@ -10,9 +11,9 @@ export class ExplorerComponent implements OnInit {
 
   @Input() tas;
   @Input() app;
-  @Input() getData;
 
-  value=[];
+
+  value;
   backValue=[];
   img:object={ 
     folder : '../../assets/img/folder.png',
@@ -21,7 +22,7 @@ export class ExplorerComponent implements OnInit {
     picture : '../../assets/img/picture.png'
   } 
 
-  constructor(private _Data: DataService) { }
+  constructor(private _Data: AppComponent) { }
   
   back(){
     this.value=this.backValue[this.backValue.length-1];
@@ -30,14 +31,10 @@ export class ExplorerComponent implements OnInit {
     }
   }
 
-  changeValue(param){
-    console.log(param)
+  async changeValue(param){
     if(param.type=='folder'){
       this.backValue.push(this.value);
-      console.log(param.url)
-      this.value=[];
-      this.getData.getDataTable(param.url+'/',this.value);
-      console.log(this.value)
+      this.value = await this._Data.getData.getDataTable(param.url+'/');
     }
     else{
       if(param.type == 'txt'){
@@ -49,12 +46,12 @@ export class ExplorerComponent implements OnInit {
         
       }
     }
-    
   }
+
   ngOnInit() {
-    this.value=this.tas.dir;
-  
-    this.backValue.push(this.tas.dir);
+    var buf = { dir : this.tas.dir }
+    this.value=buf.dir;
+    this.backValue.push(buf.dir);
   }
 
 }
